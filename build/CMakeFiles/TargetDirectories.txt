@@ -1,0 +1,4 @@
+C:/Users/nguye/source/repos/pirserver/build/CMakeFiles/main.dir
+C:/Users/nguye/source/repos/pirserver/build/CMakeFiles/run.dir
+C:/Users/nguye/source/repos/pirserver/build/CMakeFiles/edit_cache.dir
+C:/Users/nguye/source/repos/pirserver/build/CMakeFiles/rebuild_cache.dir
