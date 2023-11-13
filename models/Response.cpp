@@ -25,3 +25,8 @@ char* Response::rawText() {
     // char* chartext = text.c_str();
     return (char*) text.data();
 }
+
+void Response::sendClient(SOCKET client) {
+    char* text = this->rawText();
+     send(client, text, strlen(text), 0);
+}

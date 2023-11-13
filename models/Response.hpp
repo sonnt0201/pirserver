@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-
+#include <winsock2.h>
 #pragma once
 
 class Response {
@@ -20,4 +20,5 @@ class Response {
         std::string body = "No body sent in response !";
         
         char* rawText() ;
+        void sendClient(SOCKET client);
 };

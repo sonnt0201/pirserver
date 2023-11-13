@@ -8,7 +8,7 @@
 #define GET 0;
 #define POST 1;
 #define PUT 2;
-#define DELETE 3;
+#define DEL 3;
 #define INVALID_METHOD -1;
 class Request {
     private:
