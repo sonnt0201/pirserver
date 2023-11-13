@@ -6,7 +6,7 @@ project(PirServer VERSION 1.0)
 # set(CMAKE_CXX_STANDARD 14)
 # set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(main main.cpp)
+add_executable(main main.cpp models/server.cpp ./models/Request.cpp ./models/Response.cpp controller.cpp)
 
 target_link_libraries(main PRIVATE ws2_32)
 

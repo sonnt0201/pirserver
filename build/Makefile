@@ -141,6 +141,30 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
+controller.obj: controller.cpp.obj
+.PHONY : controller.obj
+
+# target to build an object file
+controller.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.obj
+.PHONY : controller.cpp.obj
+
+controller.i: controller.cpp.i
+.PHONY : controller.i
+
+# target to preprocess a source file
+controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.i
+.PHONY : controller.cpp.i
+
+controller.s: controller.cpp.s
+.PHONY : controller.s
+
+# target to generate assembly for a file
+controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.s
+.PHONY : controller.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -165,6 +189,78 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+models/Request.obj: models/Request.cpp.obj
+.PHONY : models/Request.obj
+
+# target to build an object file
+models/Request.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Request.cpp.obj
+.PHONY : models/Request.cpp.obj
+
+models/Request.i: models/Request.cpp.i
+.PHONY : models/Request.i
+
+# target to preprocess a source file
+models/Request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Request.cpp.i
+.PHONY : models/Request.cpp.i
+
+models/Request.s: models/Request.cpp.s
+.PHONY : models/Request.s
+
+# target to generate assembly for a file
+models/Request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Request.cpp.s
+.PHONY : models/Request.cpp.s
+
+models/Response.obj: models/Response.cpp.obj
+.PHONY : models/Response.obj
+
+# target to build an object file
+models/Response.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Response.cpp.obj
+.PHONY : models/Response.cpp.obj
+
+models/Response.i: models/Response.cpp.i
+.PHONY : models/Response.i
+
+# target to preprocess a source file
+models/Response.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Response.cpp.i
+.PHONY : models/Response.cpp.i
+
+models/Response.s: models/Response.cpp.s
+.PHONY : models/Response.s
+
+# target to generate assembly for a file
+models/Response.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Response.cpp.s
+.PHONY : models/Response.cpp.s
+
+models/server.obj: models/server.cpp.obj
+.PHONY : models/server.obj
+
+# target to build an object file
+models/server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.obj
+.PHONY : models/server.cpp.obj
+
+models/server.i: models/server.cpp.i
+.PHONY : models/server.i
+
+# target to preprocess a source file
+models/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.i
+.PHONY : models/server.cpp.i
+
+models/server.s: models/server.cpp.s
+.PHONY : models/server.s
+
+# target to generate assembly for a file
+models/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.s
+.PHONY : models/server.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -175,9 +271,21 @@ help:
 	@echo ... rebuild_cache
 	@echo ... run
 	@echo ... main
+	@echo ... controller.obj
+	@echo ... controller.i
+	@echo ... controller.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... models/Request.obj
+	@echo ... models/Request.i
+	@echo ... models/Request.s
+	@echo ... models/Response.obj
+	@echo ... models/Response.i
+	@echo ... models/Response.s
+	@echo ... models/server.obj
+	@echo ... models/server.i
+	@echo ... models/server.s
 .PHONY : help
 
 

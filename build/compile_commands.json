@@ -4,5 +4,29 @@
   "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\main.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\main.cpp",
   "file": "C:/Users/nguye/source/repos/pirserver/main.cpp",
   "output": "CMakeFiles/main.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\server.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\server.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/models/server.cpp",
+  "output": "CMakeFiles/main.dir/models/server.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\Request.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\Request.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/models/Request.cpp",
+  "output": "CMakeFiles/main.dir/models/Request.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\Response.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\Response.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/models/Response.cpp",
+  "output": "CMakeFiles/main.dir/models/Response.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\controller.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\controller.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/controller.cpp",
+  "output": "CMakeFiles/main.dir/controller.cpp.obj"
 }
 ]
