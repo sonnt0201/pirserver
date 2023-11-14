@@ -13,9 +13,14 @@ class Server {
         int port;
         SOCKET serverSocket;
     public:
+    // Initialize server using IPv4 and with port
     Server(int port);
+
+    // listen to clients
     void run();
-    void controller(SOCKET clientSocket, Request request);
+
+    // Main process to handle request and sent response
+    void controller(SOCKET client, Request request);
     
 
 };

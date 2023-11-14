@@ -17,8 +17,13 @@ class Response {
         Response(int status, std::string contentType );
         std::string htmlPath;
         std::string jsonData;
+
+        // body content for response
         std::string body = "No body sent in response !";
         
+        // get full raw text of the response
         char* rawText() ;
+
+        // send response to client socket
         void sendClient(SOCKET client);
 };

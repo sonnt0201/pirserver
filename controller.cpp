@@ -3,7 +3,16 @@
 // #pragma once
 
 void Server::controller(SOCKET client, Request request) {
+    // main process goes here
+    // add your code ...
+    std::cout<<request.method();
+
+    // init a response object
     Response response = Response(200, "text/html");
-    response.body = "<h1>Hello from ESP32 Server! </h1>";
+
+    // configure response
+    response.body = "<html><body><h1>Hello from esp32 server</h1></body></html>";
+
+    // send
     response.sendClient(client);
 }

@@ -30,6 +30,10 @@ class Request {
 
     // Get the value of a parameter in the request
     std::string value(std::string param);
+
+    //Body content of the request
     std::string body();
+
+    // return origin request in raw text
     std::string getText() ;
 };
