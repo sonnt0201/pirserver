@@ -8,6 +8,7 @@
 int main() {
   
     Server server = Server(8080);
+    
     server.run();
     return 0;
 }

@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 #include <winsock2.h>
+#include <fstream>
 #pragma once
+
+const std::string ROOT = "../";
 
 class Response {
     private:
@@ -11,13 +14,13 @@ class Response {
         
         std::string statusCode;
         std::string contentType;
-        std::string setHtmlContent();
+        
         std::string setJsonContent();
     public:
         Response(int status, std::string contentType );
         std::string htmlPath;
         std::string jsonData;
-
+        void setHtmlContent(std::string fileName);
         // body content for response
         std::string body = "No body sent in response !";
         

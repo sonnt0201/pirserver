@@ -130,4 +130,9 @@ CMakeFiles/main.dir/models/Response.cpp.obj: \
  c:\mingw\include\olectlid.h c:\mingw\include\oleauto.h \
  c:\mingw\include\oaidl.h c:\mingw\include\oleidl.h \
  c:\mingw\include\sys\bsdtypes.h c:\mingw\include\sys\time.h \
- c:\mingw\include\nspapi.h c:\mingw\include\wtypes.h
+ c:\mingw\include\nspapi.h c:\mingw\include\wtypes.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\fstream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\codecvt.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\basic_file.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\c++io.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc
