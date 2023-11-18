@@ -1,8 +1,7 @@
-#include "models/server.hpp"
-#include "models/Request.hpp"
-// #pragma once
+#include "Controller.hpp"
 
-void Server::controller(SOCKET client, Request request)
+
+void controller(SOCKET client, Request request)
 {
     // main process goes here
     // add your code ...

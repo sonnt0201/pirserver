@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include <winsock2.h>
-#include "models/server.hpp"
-#include "models/Request.hpp"
+
+#include "controllers/server.hpp"
 #include "lib/sqlite3.h"
 #include "models/PIRDB.hpp"
 static int callback(void *data, int argc, char **argv, char **azColName) {

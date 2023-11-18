@@ -40,7 +40,7 @@ void Response::sendClient(SOCKET client)
 void Response::setHtmlContent(std::string fileName)
 {
     // Assuming htmlPath is the root directory followed by the fileName
-    std::string fullPath = "../pages/" + fileName;
+    std::string fullPath = "../web-views/" + fileName;
 
     // Open the file
     std::ifstream file(fullPath);

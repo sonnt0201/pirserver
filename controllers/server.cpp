@@ -1,5 +1,5 @@
 #include "server.hpp"
-
+#include "Controller.hpp"
 #pragma comment(lib, "Ws2_32.lib");
 
 Server::Server(int port) {
@@ -72,7 +72,7 @@ void Server::run() {
             (bytesRead = recv(clientSocket, request, sizeof(request), 0) ) > 0
         ) {
              Request req = Request(request);
-            this->controller(clientSocket, req);
+            controller(clientSocket, req);
             closesocket(clientSocket);
         }
     }

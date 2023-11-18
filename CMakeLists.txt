@@ -8,11 +8,11 @@ project(PirServer VERSION 1.0)
 
 add_executable(main 
 main.cpp 
-models/server.cpp 
 ./models/Request.cpp 
 ./models/Response.cpp 
 ./models/PIRDB.cpp
-controller.cpp 
+controllers/server.cpp
+controllers/Controller.cpp
 lib/sqlite3.c
 
 )

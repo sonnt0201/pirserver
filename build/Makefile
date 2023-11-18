@@ -141,29 +141,53 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
-controller.obj: controller.cpp.obj
-.PHONY : controller.obj
+controllers/Controller.obj: controllers/Controller.cpp.obj
+.PHONY : controllers/Controller.obj
 
 # target to build an object file
-controller.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.obj
-.PHONY : controller.cpp.obj
+controllers/Controller.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Controller.cpp.obj
+.PHONY : controllers/Controller.cpp.obj
 
-controller.i: controller.cpp.i
-.PHONY : controller.i
+controllers/Controller.i: controllers/Controller.cpp.i
+.PHONY : controllers/Controller.i
 
 # target to preprocess a source file
-controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.i
-.PHONY : controller.cpp.i
+controllers/Controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Controller.cpp.i
+.PHONY : controllers/Controller.cpp.i
 
-controller.s: controller.cpp.s
-.PHONY : controller.s
+controllers/Controller.s: controllers/Controller.cpp.s
+.PHONY : controllers/Controller.s
 
 # target to generate assembly for a file
-controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.s
-.PHONY : controller.cpp.s
+controllers/Controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Controller.cpp.s
+.PHONY : controllers/Controller.cpp.s
+
+controllers/server.obj: controllers/server.cpp.obj
+.PHONY : controllers/server.obj
+
+# target to build an object file
+controllers/server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/server.cpp.obj
+.PHONY : controllers/server.cpp.obj
+
+controllers/server.i: controllers/server.cpp.i
+.PHONY : controllers/server.i
+
+# target to preprocess a source file
+controllers/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/server.cpp.i
+.PHONY : controllers/server.cpp.i
+
+controllers/server.s: controllers/server.cpp.s
+.PHONY : controllers/server.s
+
+# target to generate assembly for a file
+controllers/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/server.cpp.s
+.PHONY : controllers/server.cpp.s
 
 lib/sqlite3.obj: lib/sqlite3.c.obj
 .PHONY : lib/sqlite3.obj
@@ -285,30 +309,6 @@ models/Response.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/Response.cpp.s
 .PHONY : models/Response.cpp.s
 
-models/server.obj: models/server.cpp.obj
-.PHONY : models/server.obj
-
-# target to build an object file
-models/server.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.obj
-.PHONY : models/server.cpp.obj
-
-models/server.i: models/server.cpp.i
-.PHONY : models/server.i
-
-# target to preprocess a source file
-models/server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.i
-.PHONY : models/server.cpp.i
-
-models/server.s: models/server.cpp.s
-.PHONY : models/server.s
-
-# target to generate assembly for a file
-models/server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/server.cpp.s
-.PHONY : models/server.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -319,9 +319,12 @@ help:
 	@echo ... rebuild_cache
 	@echo ... run
 	@echo ... main
-	@echo ... controller.obj
-	@echo ... controller.i
-	@echo ... controller.s
+	@echo ... controllers/Controller.obj
+	@echo ... controllers/Controller.i
+	@echo ... controllers/Controller.s
+	@echo ... controllers/server.obj
+	@echo ... controllers/server.i
+	@echo ... controllers/server.s
 	@echo ... lib/sqlite3.obj
 	@echo ... lib/sqlite3.i
 	@echo ... lib/sqlite3.s
@@ -337,9 +340,6 @@ help:
 	@echo ... models/Response.obj
 	@echo ... models/Response.i
 	@echo ... models/Response.s
-	@echo ... models/server.obj
-	@echo ... models/server.i
-	@echo ... models/server.s
 .PHONY : help
 
 
