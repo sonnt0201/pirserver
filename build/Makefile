@@ -165,6 +165,30 @@ controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controller.cpp.s
 .PHONY : controller.cpp.s
 
+lib/sqlite3.obj: lib/sqlite3.c.obj
+.PHONY : lib/sqlite3.obj
+
+# target to build an object file
+lib/sqlite3.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/sqlite3.c.obj
+.PHONY : lib/sqlite3.c.obj
+
+lib/sqlite3.i: lib/sqlite3.c.i
+.PHONY : lib/sqlite3.i
+
+# target to preprocess a source file
+lib/sqlite3.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/sqlite3.c.i
+.PHONY : lib/sqlite3.c.i
+
+lib/sqlite3.s: lib/sqlite3.c.s
+.PHONY : lib/sqlite3.s
+
+# target to generate assembly for a file
+lib/sqlite3.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/sqlite3.c.s
+.PHONY : lib/sqlite3.c.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -188,6 +212,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+models/PIRDB.obj: models/PIRDB.cpp.obj
+.PHONY : models/PIRDB.obj
+
+# target to build an object file
+models/PIRDB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/PIRDB.cpp.obj
+.PHONY : models/PIRDB.cpp.obj
+
+models/PIRDB.i: models/PIRDB.cpp.i
+.PHONY : models/PIRDB.i
+
+# target to preprocess a source file
+models/PIRDB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/PIRDB.cpp.i
+.PHONY : models/PIRDB.cpp.i
+
+models/PIRDB.s: models/PIRDB.cpp.s
+.PHONY : models/PIRDB.s
+
+# target to generate assembly for a file
+models/PIRDB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/models/PIRDB.cpp.s
+.PHONY : models/PIRDB.cpp.s
 
 models/Request.obj: models/Request.cpp.obj
 .PHONY : models/Request.obj
@@ -274,9 +322,15 @@ help:
 	@echo ... controller.obj
 	@echo ... controller.i
 	@echo ... controller.s
+	@echo ... lib/sqlite3.obj
+	@echo ... lib/sqlite3.i
+	@echo ... lib/sqlite3.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... models/PIRDB.obj
+	@echo ... models/PIRDB.i
+	@echo ... models/PIRDB.s
 	@echo ... models/Request.obj
 	@echo ... models/Request.i
 	@echo ... models/Request.s

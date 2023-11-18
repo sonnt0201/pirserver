@@ -124,10 +124,24 @@ CMakeFiles/main.dir/models/Response.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/models/Response.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\models\Response.cpp -o CMakeFiles\main.dir\models\Response.cpp.s
 
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/models/PIRDB.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/models/PIRDB.cpp.obj -MF CMakeFiles\main.dir\models\PIRDB.cpp.obj.d -o CMakeFiles\main.dir\models\PIRDB.cpp.obj -c C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp
+
+CMakeFiles/main.dir/models/PIRDB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/models/PIRDB.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp > CMakeFiles\main.dir\models\PIRDB.cpp.i
+
+CMakeFiles/main.dir/models/PIRDB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/models/PIRDB.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp -o CMakeFiles\main.dir\models\PIRDB.cpp.s
+
 CMakeFiles/main.dir/controller.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/controller.cpp.obj: C:/Users/nguye/source/repos/pirserver/controller.cpp
 CMakeFiles/main.dir/controller.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/controller.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/controller.cpp.obj"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/controller.cpp.obj -MF CMakeFiles\main.dir\controller.cpp.obj.d -o CMakeFiles\main.dir\controller.cpp.obj -c C:\Users\nguye\source\repos\pirserver\controller.cpp
 
 CMakeFiles/main.dir/controller.cpp.i: cmake_force
@@ -138,13 +152,29 @@ CMakeFiles/main.dir/controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/controller.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\controller.cpp -o CMakeFiles\main.dir\controller.cpp.s
 
+CMakeFiles/main.dir/lib/sqlite3.c.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/lib/sqlite3.c.obj: C:/Users/nguye/source/repos/pirserver/lib/sqlite3.c
+CMakeFiles/main.dir/lib/sqlite3.c.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/main.dir/lib/sqlite3.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/lib/sqlite3.c.obj -MF CMakeFiles\main.dir\lib\sqlite3.c.obj.d -o CMakeFiles\main.dir\lib\sqlite3.c.obj -c C:\Users\nguye\source\repos\pirserver\lib\sqlite3.c
+
+CMakeFiles/main.dir/lib/sqlite3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/lib/sqlite3.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\nguye\source\repos\pirserver\lib\sqlite3.c > CMakeFiles\main.dir\lib\sqlite3.c.i
+
+CMakeFiles/main.dir/lib/sqlite3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/lib/sqlite3.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\nguye\source\repos\pirserver\lib\sqlite3.c -o CMakeFiles\main.dir\lib\sqlite3.c.s
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.obj" \
 "CMakeFiles/main.dir/models/server.cpp.obj" \
 "CMakeFiles/main.dir/models/Request.cpp.obj" \
 "CMakeFiles/main.dir/models/Response.cpp.obj" \
-"CMakeFiles/main.dir/controller.cpp.obj"
+"CMakeFiles/main.dir/models/PIRDB.cpp.obj" \
+"CMakeFiles/main.dir/controller.cpp.obj" \
+"CMakeFiles/main.dir/lib/sqlite3.c.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -153,12 +183,14 @@ main.exe: CMakeFiles/main.dir/main.cpp.obj
 main.exe: CMakeFiles/main.dir/models/server.cpp.obj
 main.exe: CMakeFiles/main.dir/models/Request.cpp.obj
 main.exe: CMakeFiles/main.dir/models/Response.cpp.obj
+main.exe: CMakeFiles/main.dir/models/PIRDB.cpp.obj
 main.exe: CMakeFiles/main.dir/controller.cpp.obj
+main.exe: CMakeFiles/main.dir/lib/sqlite3.c.obj
 main.exe: CMakeFiles/main.dir/build.make
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

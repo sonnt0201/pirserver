@@ -25,8 +25,20 @@
 },
 {
   "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\PIRDB.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\PIRDB.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp",
+  "output": "CMakeFiles/main.dir/models/PIRDB.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
   "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\controller.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\controller.cpp",
   "file": "C:/Users/nguye/source/repos/pirserver/controller.cpp",
   "output": "CMakeFiles/main.dir/controller.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\main.dir\\lib\\sqlite3.c.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\lib\\sqlite3.c",
+  "file": "C:/Users/nguye/source/repos/pirserver/lib/sqlite3.c",
+  "output": "CMakeFiles/main.dir/lib/sqlite3.c.obj"
 }
 ]

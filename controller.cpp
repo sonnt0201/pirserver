@@ -18,6 +18,7 @@ void Server::controller(SOCKET client, Request request)
         {
             std::cout << "Request param value error"
                       << "\n";
+            std::cout << "Request raw text: \n"<< request.getText()<<"\n\n";
         }
 
         std::cout << "device id: " << espId << "\n";

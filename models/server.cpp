@@ -60,7 +60,6 @@ void Server::run() {
             printf("Fail to accept client connection. \n");
             WSACleanup();
            
-
         }
 
         // vars def
@@ -82,12 +81,3 @@ void Server::run() {
     WSACleanup();
 }
 
-// void Server::controller(SOCKET clientSocket, Request request) {
-    
-            
-//             std::cout<<request.getText()<<std::endl;
-           
-           
-//             char response[] = "HTTP/1.1 200 OK \nContent-Type: text/html\n\n<html><body><h1>hello world</h1></body></html>";
-//             send(clientSocket, response, strlen(response), 0);
-// }
