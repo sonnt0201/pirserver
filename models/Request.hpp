@@ -10,19 +10,22 @@
 #define PUT 2;
 #define DEL 3;
 #define INVALID_METHOD -1;
+
+// HTTP Request class - contains read-only attributes and methods
 class Request {
     private:
         // raw text of the request in std::string type
         std::string rawText;
        
     public:
-    // Initializer
+
+    // Initializer with char* request received from client 
     Request(char request[8000]); 
 
     // METHOD of HTTP Request (GET - POST - PUT - DELETE)
     int method();
 
-    //Path of the method
+    //Path of the Request
     std::string path();
 
     // List of the parameters in the request

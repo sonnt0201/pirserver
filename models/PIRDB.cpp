@@ -16,7 +16,7 @@ PIRDB::PIRDB(std::string dbFileName)
     int rc = sqlite3_open(charf, &this->db);
 
 
-    const char *createTableSQL = "CREATE TABLE IF NOT EXISTS your_table ("
+    const char *createTableSQL = "CREATE TABLE IF NOT EXISTS pir ("
                                  "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                  "esp_id INTEGER NOT NULL,"
                                  "vol VARCHAR NOT NULL,"
@@ -31,7 +31,7 @@ PIRDB::PIRDB(std::string dbFileName)
 
 int PIRDB::numOfRows()
 {
-    const char *countRowsSQL = "SELECT COUNT(*) FROM your_table;";
+    const char *countRowsSQL = "SELECT COUNT(*) FROM pir;";
     sqlite3_stmt *stmt;
 
     int rc = sqlite3_prepare_v2(this->db, countRowsSQL, -1, &stmt, 0);
@@ -61,7 +61,7 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
 {
     std::vector<std::string> result;
 
-    const char *selectDataSQL = "SELECT esp_id, vol, time FROM your_table WHERE id = ?;";
+    const char *selectDataSQL = "SELECT esp_id, vol, time FROM pir WHERE id = ?;";
     sqlite3_stmt *stmt;
    
     int rc = sqlite3_prepare_v2(this->db, selectDataSQL, -1, &stmt, 0);
@@ -93,9 +93,10 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
     return result;
 }
 
-void PIRDB::addData(int deviceID, std::string vol, int time) {
-    const char *query = "INSERT INTO pir "
-                        "VALUE(?, ?, ?, ?);";
+
+int PIRDB::addData(int deviceID, std::string vol, int time) {
+    const char *query = "INSERT INTO pir (esp_id, vol, time)"
+                        "VALUES ( ?, ? , ?);";
 
     sqlite3_stmt *stmt;
 
@@ -104,8 +105,19 @@ void PIRDB::addData(int deviceID, std::string vol, int time) {
     rc = sqlite3_prepare_v2(this->db, query, -1, &stmt, 0);
 
     if (rc != SQLITE_OK) {
-        
+        std::cerr<<"Cannot prepare the statement: "<<sqlite3_errmsg(this->db)<<std::endl;
+    }
+    
+
+   
+    sqlite3_bind_int(stmt,1,deviceID);
+    sqlite3_bind_text(stmt, 2, strdup(vol.c_str()), -1, NULL);
+    sqlite3_bind_int(stmt, 3,time);
+
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        std::cout<<"Insert data failed: "<<sqlite3_errmsg(this->db)<<std::endl;
     }
 
-
+    return rc;
 };

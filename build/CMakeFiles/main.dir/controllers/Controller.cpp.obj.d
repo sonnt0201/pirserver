@@ -144,4 +144,6 @@ CMakeFiles/main.dir/controllers/Controller.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\codecvt.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\basic_file.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\c++io.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc \
+ c:\users\nguye\source\repos\pirserver\models\pirdb.hpp \
+ c:\users\nguye\source\repos\pirserver\lib\sqlite3.h

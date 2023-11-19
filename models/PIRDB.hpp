@@ -22,6 +22,8 @@ class PIRDB {
     PIRDB(std::string dbFileName);
     int numOfRows();
     std::vector<std::string> getDataWithID(int ID);
-    void addData(int deviceID, std::string vol, int time);
+
+    /* Add data to database - return SQLITE_DONE if saving sucessfully */
+    int addData(int deviceID, std::string vol, int time);
 };
 
