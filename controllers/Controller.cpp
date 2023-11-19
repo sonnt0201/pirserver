@@ -4,14 +4,15 @@ PIRDB db = PIRDB("esp32.db");
 
 std::string toJson(std::vector<std::vector<std::string>> vec)
 {
-     std::string json = "{";
+    std::string json = "{";
     for (long i = 0; i < vec.size(); i++)
     {
-        json += '\"' + vec[i][0] + "\": " + '\"' + vec[i][1] + '\"' ;
-        if (i < (vec.size() - 1)) json += ',';
+        json += '\"' + vec[i][0] + "\": " + '\"' + vec[i][1] + '\"';
+        if (i < (vec.size() - 1))
+            json += ',';
     }
     json += "}";
-    return json;  // Add this return statement
+    return json; // Add this return statement
 };
 
 void controller(SOCKET client, Request request)
@@ -30,6 +31,10 @@ void controller(SOCKET client, Request request)
             std::cout << "Request raw text: \n"
                       << request.getText() << "\n\n";
         }
+        // print to server
+        std::cout << "device id: " << espId << std::endl;
+        std::cout << "voltage: " << vol << std::endl;
+        std::cout << "time: " << time << std::endl<<std::endl;
 
         int rc = db.addData(std::stoi(espId), vol, std::stoi(time));
         // init a response object
@@ -63,27 +68,27 @@ void controller(SOCKET client, Request request)
     if (request.method() == 0 && request.path() == "/api")
     {
         Response response = Response(200, "application/json");
-    int numRows = db.numOfRows();
-    std::string body = "[";
+        int numRows = db.numOfRows();
+        std::string body = "[";
 
-    for (int i = 1; i <= numRows; i++)
-    {
-        std::vector<std::string> data = db.getDataWithID(i);
-        std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"time", data[2]}};
-        body += toJson(str);
-
-        if (i < numRows)
+        for (int i = 1; i <= numRows; i++)
         {
-            body += ",";
+            std::vector<std::string> data = db.getDataWithID(i);
+            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"time", data[2]}};
+            body += toJson(str);
+
+            if (i < numRows)
+            {
+                body += ",";
+            }
         }
+
+        body += "]";
+        response.body = body;
+        response.sendClient(client);
+        return;
     }
 
-    body += "]";
-    response.body = body;
-    response.sendClient(client);
-    return;
-    }
-
-    std::cout<<request.getText();
+    // std::cout << request.getText();
     return;
 }
