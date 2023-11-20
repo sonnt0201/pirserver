@@ -78,8 +78,17 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
 
     if (rc == SQLITE_ROW)
     {
+
         result.push_back(std::to_string(sqlite3_column_int(stmt, 0)));  // esp_id
-        result.push_back(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));  // vol
+
+        // reformat voltatge
+        std::string strVol = reinterpret_cast<const char*>(sqlite3_column_text(stmt,1));
+        for (int i = 0; i < strVol.length() ;i++) {
+            if (strVol[i] == '+') strVol[i] = ',';
+        }
+        strVol = '[' + strVol + ']';
+        result.push_back(strVol);  // vol
+
         result.push_back(std::to_string(sqlite3_column_int(stmt, 2)));  // time
     }
     else
@@ -112,6 +121,7 @@ int PIRDB::addData(int deviceID, std::string vol, int time) {
    
     sqlite3_bind_int(stmt,1,deviceID);
     sqlite3_bind_text(stmt, 2, strdup(vol.c_str()), -1, NULL);
+
     sqlite3_bind_int(stmt, 3,time);
 
     rc = sqlite3_step(stmt);

@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1> test api </h1>
-    <form  method='post'>
-        <label>Nhập nội dung test </label>
-        <input type='text' id='esp-id' name='esp-id' placeholder="esp-id">
-        <input type='text' id='vol' name='vol' placeholder="voltage">
-        <input type='text' id='time' name='time' placeholder="time">
-        <input type="submit" value="Gửi đi">
-    </form>
-</body>
+
+    <style>
+        h1{
+            text-align: center;
+        }
+      table {
+        width: 60%;
+        margin: 0 auto 0;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid white;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        background-color: #96d4d4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <h1>PIR DATABASE</h1>
+      <table id="database">
+        <tr>
+          <th>ID</th>
+          <th>ESP32 ID</th>
+          <th>Voltage</th>
+          <th>Time</th>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      const db = document.querySelector("#database");
+      var arr;
+    fetch('http://127.0.0.1:8080/api').then(response => response.json()).then(data => console.log(data));   
+    </script>
+  </body>
 </html>

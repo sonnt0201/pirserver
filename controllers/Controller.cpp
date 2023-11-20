@@ -7,7 +7,7 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
     std::string json = "{";
     for (long i = 0; i < vec.size(); i++)
     {
-        json += '\"' + vec[i][0] + "\": " + '\"' + vec[i][1] + '\"';
+        json += '\"' + vec[i][0] + "\": "  + vec[i][1];
         if (i < (vec.size() - 1))
             json += ',';
     }
@@ -74,7 +74,7 @@ void controller(SOCKET client, Request request)
         for (int i = 1; i <= numRows; i++)
         {
             std::vector<std::string> data = db.getDataWithID(i);
-            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"time", data[2]}};
+            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"timestamp", data[2]}};
             body += toJson(str);
 
             if (i < numRows)

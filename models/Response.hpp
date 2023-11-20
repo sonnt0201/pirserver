@@ -14,7 +14,7 @@ class Response {
         
         std::string statusCode;
         std::string contentType;
-        
+        std::string accessControl = "";
         std::string setJsonContent();
     public:
         Response(int status, std::string contentType );

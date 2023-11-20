@@ -21,12 +21,12 @@ Response::Response(int status, std::string contentType)
 char *Response::rawText()
 {
     std::string header = "";
-     header = "HTTP/1.1 " + statusCode + "\n" + "Content-Type: " + this->contentType + "\n\n";
+    header = "HTTP/1.1 " + statusCode + "\n" + "Content-Type: " + this->contentType + "\n" + "Access-Control-Allow-Origin: *" + "\n\n";
 
     std::string text = header + this->body;
 
     // Allocate memory for the C-style string (char array) and copy the content
-    char* chartext = strdup(text.c_str());
+    char *chartext = strdup(text.c_str());
 
     return chartext;
 }
