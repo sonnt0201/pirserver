@@ -10,7 +10,7 @@
             text-align: center;
         }
       table {
-        width: 60%;
+        width: 80%;
         margin: 0 auto 0;
       }
       table,
@@ -22,6 +22,18 @@
       th,
       td {
         background-color: #96d4d4;
+        padding: 0.5rem;
+      }
+
+      .header *{
+        background-color: #2E4374 ;
+        color: white;
+        font-weight: bolder;
+      }
+
+      .num:hover {
+        background-color: beige;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -29,7 +41,7 @@
     <div class="root">
       <h1>PIR DATABASE</h1>
       <table id="database">
-        <tr>
+        <tr class="header">
           <th>ID</th>
           <th>ESP32 ID</th>
           <th>Voltage</th>
@@ -40,8 +52,26 @@
 
     <script>
       const db = document.querySelector("#database");
-      var arr;
-    fetch('http://127.0.0.1:8080/api').then(response => response.json()).then(data => console.log(data));   
+      
+    fetch('http://127.0.0.1:8080/api').then(response => response.json()).then(arr => {
+      arr.forEach(data => {
+        const rowHTML = `
+        <tr>
+          <td>${data.id}</td>
+          <td>${data.esp_id}</td>
+          <td>${data.voltage.map(val => `
+            <span class='num'> ${val}</span>
+            `).join(' ')}</td>
+          <td>${new Date(data.timestamp)}</td>
+        </tr>
+      `;
+
+      // Append the HTML content to the table using insertAdjacentHTML
+      db.insertAdjacentHTML('beforeend', rowHTML);
+      })
+       
+
+    });   
     </script>
   </body>
 </html>

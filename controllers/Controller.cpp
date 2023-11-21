@@ -89,6 +89,16 @@ void controller(SOCKET client, Request request)
         return;
     }
 
+
+    // test page
+    if (request.method() == 0 && request.path() == "/test")
+    {
+        Response response = Response(200, "text/html");
+        response.setHtmlContent("test.html");
+        // printf("%s\n",response.rawText();
+        response.sendClient(client);
+        return;
+    }
     // std::cout << request.getText();
     return;
 }
