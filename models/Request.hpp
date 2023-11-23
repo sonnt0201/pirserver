@@ -5,11 +5,11 @@
 #include <string.h>
 #include <stdio.h>
 #pragma once
-#define GET 0;
-#define POST 1;
-#define PUT 2;
-#define DEL 3;
-#define INVALID_METHOD -1;
+#define GET 0 
+#define POST 1 
+#define PUT 2 
+#define DEL 3 
+#define INVALID_METHOD -1
 
 // HTTP Request class - contains read-only attributes and methods
 class Request {

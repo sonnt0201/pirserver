@@ -21,9 +21,7 @@ class Server {
     // PIRDB database;
     // listen to clients
     void run();
-
-    
-    
-
 };
+
+
 

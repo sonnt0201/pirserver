@@ -82,10 +82,24 @@ CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\main.cpp -o CMakeFiles\main.dir\main.cpp.s
 
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp
+CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/models/PIRDB.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/models/PIRDB.cpp.obj -MF CMakeFiles\main.dir\models\PIRDB.cpp.obj.d -o CMakeFiles\main.dir\models\PIRDB.cpp.obj -c C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp
+
+CMakeFiles/main.dir/models/PIRDB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/models/PIRDB.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp > CMakeFiles\main.dir\models\PIRDB.cpp.i
+
+CMakeFiles/main.dir/models/PIRDB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/models/PIRDB.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp -o CMakeFiles\main.dir\models\PIRDB.cpp.s
+
 CMakeFiles/main.dir/models/Request.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/models/Request.cpp.obj: C:/Users/nguye/source/repos/pirserver/models/Request.cpp
 CMakeFiles/main.dir/models/Request.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/models/Request.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/models/Request.cpp.obj"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/models/Request.cpp.obj -MF CMakeFiles\main.dir\models\Request.cpp.obj.d -o CMakeFiles\main.dir\models\Request.cpp.obj -c C:\Users\nguye\source\repos\pirserver\models\Request.cpp
 
 CMakeFiles/main.dir/models/Request.cpp.i: cmake_force
@@ -99,7 +113,7 @@ CMakeFiles/main.dir/models/Request.cpp.s: cmake_force
 CMakeFiles/main.dir/models/Response.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/models/Response.cpp.obj: C:/Users/nguye/source/repos/pirserver/models/Response.cpp
 CMakeFiles/main.dir/models/Response.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/models/Response.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/models/Response.cpp.obj"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/models/Response.cpp.obj -MF CMakeFiles\main.dir\models\Response.cpp.obj.d -o CMakeFiles\main.dir\models\Response.cpp.obj -c C:\Users\nguye\source\repos\pirserver\models\Response.cpp
 
 CMakeFiles/main.dir/models/Response.cpp.i: cmake_force
@@ -110,38 +124,10 @@ CMakeFiles/main.dir/models/Response.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/models/Response.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\models\Response.cpp -o CMakeFiles\main.dir\models\Response.cpp.s
 
-CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/models/PIRDB.cpp.obj: C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp
-CMakeFiles/main.dir/models/PIRDB.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/models/PIRDB.cpp.obj"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/models/PIRDB.cpp.obj -MF CMakeFiles\main.dir\models\PIRDB.cpp.obj.d -o CMakeFiles\main.dir\models\PIRDB.cpp.obj -c C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp
-
-CMakeFiles/main.dir/models/PIRDB.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/models/PIRDB.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp > CMakeFiles\main.dir\models\PIRDB.cpp.i
-
-CMakeFiles/main.dir/models/PIRDB.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/models/PIRDB.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\models\PIRDB.cpp -o CMakeFiles\main.dir\models\PIRDB.cpp.s
-
-CMakeFiles/main.dir/controllers/server.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/controllers/server.cpp.obj: C:/Users/nguye/source/repos/pirserver/controllers/server.cpp
-CMakeFiles/main.dir/controllers/server.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/controllers/server.cpp.obj"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/controllers/server.cpp.obj -MF CMakeFiles\main.dir\controllers\server.cpp.obj.d -o CMakeFiles\main.dir\controllers\server.cpp.obj -c C:\Users\nguye\source\repos\pirserver\controllers\server.cpp
-
-CMakeFiles/main.dir/controllers/server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/controllers/server.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nguye\source\repos\pirserver\controllers\server.cpp > CMakeFiles\main.dir\controllers\server.cpp.i
-
-CMakeFiles/main.dir/controllers/server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/controllers/server.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\controllers\server.cpp -o CMakeFiles\main.dir\controllers\server.cpp.s
-
 CMakeFiles/main.dir/controllers/Controller.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/controllers/Controller.cpp.obj: C:/Users/nguye/source/repos/pirserver/controllers/Controller.cpp
 CMakeFiles/main.dir/controllers/Controller.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/controllers/Controller.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/controllers/Controller.cpp.obj"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/controllers/Controller.cpp.obj -MF CMakeFiles\main.dir\controllers\Controller.cpp.obj.d -o CMakeFiles\main.dir\controllers\Controller.cpp.obj -c C:\Users\nguye\source\repos\pirserver\controllers\Controller.cpp
 
 CMakeFiles/main.dir/controllers/Controller.cpp.i: cmake_force
@@ -151,6 +137,20 @@ CMakeFiles/main.dir/controllers/Controller.cpp.i: cmake_force
 CMakeFiles/main.dir/controllers/Controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/controllers/Controller.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\controllers\Controller.cpp -o CMakeFiles\main.dir\controllers\Controller.cpp.s
+
+CMakeFiles/main.dir/controllers/server.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/controllers/server.cpp.obj: C:/Users/nguye/source/repos/pirserver/controllers/server.cpp
+CMakeFiles/main.dir/controllers/server.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\nguye\source\repos\pirserver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/controllers/server.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/controllers/server.cpp.obj -MF CMakeFiles\main.dir\controllers\server.cpp.obj.d -o CMakeFiles\main.dir\controllers\server.cpp.obj -c C:\Users\nguye\source\repos\pirserver\controllers\server.cpp
+
+CMakeFiles/main.dir/controllers/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/controllers/server.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nguye\source\repos\pirserver\controllers\server.cpp > CMakeFiles\main.dir\controllers\server.cpp.i
+
+CMakeFiles/main.dir/controllers/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/controllers/server.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nguye\source\repos\pirserver\controllers\server.cpp -o CMakeFiles\main.dir\controllers\server.cpp.s
 
 CMakeFiles/main.dir/lib/sqlite3.c.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/lib/sqlite3.c.obj: C:/Users/nguye/source/repos/pirserver/lib/sqlite3.c
@@ -169,22 +169,22 @@ CMakeFiles/main.dir/lib/sqlite3.c.s: cmake_force
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.obj" \
+"CMakeFiles/main.dir/models/PIRDB.cpp.obj" \
 "CMakeFiles/main.dir/models/Request.cpp.obj" \
 "CMakeFiles/main.dir/models/Response.cpp.obj" \
-"CMakeFiles/main.dir/models/PIRDB.cpp.obj" \
-"CMakeFiles/main.dir/controllers/server.cpp.obj" \
 "CMakeFiles/main.dir/controllers/Controller.cpp.obj" \
+"CMakeFiles/main.dir/controllers/server.cpp.obj" \
 "CMakeFiles/main.dir/lib/sqlite3.c.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main.exe: CMakeFiles/main.dir/main.cpp.obj
+main.exe: CMakeFiles/main.dir/models/PIRDB.cpp.obj
 main.exe: CMakeFiles/main.dir/models/Request.cpp.obj
 main.exe: CMakeFiles/main.dir/models/Response.cpp.obj
-main.exe: CMakeFiles/main.dir/models/PIRDB.cpp.obj
-main.exe: CMakeFiles/main.dir/controllers/server.cpp.obj
 main.exe: CMakeFiles/main.dir/controllers/Controller.cpp.obj
+main.exe: CMakeFiles/main.dir/controllers/server.cpp.obj
 main.exe: CMakeFiles/main.dir/lib/sqlite3.c.obj
 main.exe: CMakeFiles/main.dir/build.make
 main.exe: CMakeFiles/main.dir/linkLibs.rsp

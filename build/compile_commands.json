@@ -7,6 +7,12 @@
 },
 {
   "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\PIRDB.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\PIRDB.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp",
+  "output": "CMakeFiles/main.dir/models/PIRDB.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
   "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\Request.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\Request.cpp",
   "file": "C:/Users/nguye/source/repos/pirserver/models/Request.cpp",
   "output": "CMakeFiles/main.dir/models/Request.cpp.obj"
@@ -19,21 +25,15 @@
 },
 {
   "directory": "C:/Users/nguye/source/repos/pirserver/build",
-  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\models\\PIRDB.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\models\\PIRDB.cpp",
-  "file": "C:/Users/nguye/source/repos/pirserver/models/PIRDB.cpp",
-  "output": "CMakeFiles/main.dir/models/PIRDB.cpp.obj"
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\controllers\\Controller.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\controllers\\Controller.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/controllers/Controller.cpp",
+  "output": "CMakeFiles/main.dir/controllers/Controller.cpp.obj"
 },
 {
   "directory": "C:/Users/nguye/source/repos/pirserver/build",
   "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\controllers\\server.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\controllers\\server.cpp",
   "file": "C:/Users/nguye/source/repos/pirserver/controllers/server.cpp",
   "output": "CMakeFiles/main.dir/controllers/server.cpp.obj"
-},
-{
-  "directory": "C:/Users/nguye/source/repos/pirserver/build",
-  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\controllers\\Controller.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\controllers\\Controller.cpp",
-  "file": "C:/Users/nguye/source/repos/pirserver/controllers/Controller.cpp",
-  "output": "CMakeFiles/main.dir/controllers/Controller.cpp.obj"
 },
 {
   "directory": "C:/Users/nguye/source/repos/pirserver/build",

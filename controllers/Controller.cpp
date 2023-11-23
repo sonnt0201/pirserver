@@ -18,7 +18,7 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
 void controller(SOCKET client, Request request)
 {
 
-    if (request.method() == 1)
+    if (request.method() == POST and request.path() == "/")
     {
         std::string espId = request.value("esp-id"),
                     vol = request.value("vol"),
@@ -56,7 +56,7 @@ void controller(SOCKET client, Request request)
         return;
     }
 
-    if (request.method() == 0 && request.path() == "/")
+    if (request.method() == GET && request.path() == "/")
     {
         Response response = Response(200, "text/html");
         response.setHtmlContent("index.html");
@@ -65,7 +65,7 @@ void controller(SOCKET client, Request request)
         return;
     }
 
-    if (request.method() == 0 && request.path() == "/api")
+    if (request.method() == GET && request.path() == "/api")
     {
         Response response = Response(200, "application/json");
         int numRows = db.numOfRows();
@@ -91,7 +91,7 @@ void controller(SOCKET client, Request request)
 
 
     // test page
-    if (request.method() == 0 && request.path() == "/test")
+    if (request.method() == GET && request.path() == "/test")
     {
         Response response = Response(200, "text/html");
         response.setHtmlContent("test.html");

@@ -3,16 +3,14 @@ cmake_minimum_required(VERSION 3.10)
 project(PirServer VERSION 1.0)
 
 
-
+file(GLOB MODELS models/*.cpp)
+file(GLOB CONTROLLERS controllers/*.cpp)
  # Include directory for libpq headers
 
 add_executable(main 
 main.cpp 
-./models/Request.cpp 
-./models/Response.cpp 
-./models/PIRDB.cpp
-controllers/server.cpp
-controllers/Controller.cpp
+${MODELS}
+${CONTROLLERS}
 lib/sqlite3.c
 
 )

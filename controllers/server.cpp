@@ -1,5 +1,6 @@
 #include "server.hpp"
 #include "Controller.hpp"
+#include "Filter.hpp"
 #pragma comment(lib, "Ws2_32.lib");
 
 Server::Server(int port) {
@@ -73,7 +74,7 @@ void Server::run() {
             (bytesRead = recv(clientSocket, request, sizeof(request), 0) ) > 0
         ) {
              Request req = Request(request);
-            controller(clientSocket, req);
+            if (filter(req) == true) controller(clientSocket, req);
             closesocket(clientSocket);
         }
     }
