@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/controllers/Controller.cpp.obj"
   "CMakeFiles/main.dir/controllers/Controller.cpp.obj.d"
+  "CMakeFiles/main.dir/controllers/Filter.cpp.obj"
+  "CMakeFiles/main.dir/controllers/Filter.cpp.obj.d"
   "CMakeFiles/main.dir/controllers/server.cpp.obj"
   "CMakeFiles/main.dir/controllers/server.cpp.obj.d"
   "CMakeFiles/main.dir/lib/sqlite3.c.obj"

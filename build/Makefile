@@ -165,6 +165,30 @@ controllers/Controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Controller.cpp.s
 .PHONY : controllers/Controller.cpp.s
 
+controllers/Filter.obj: controllers/Filter.cpp.obj
+.PHONY : controllers/Filter.obj
+
+# target to build an object file
+controllers/Filter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Filter.cpp.obj
+.PHONY : controllers/Filter.cpp.obj
+
+controllers/Filter.i: controllers/Filter.cpp.i
+.PHONY : controllers/Filter.i
+
+# target to preprocess a source file
+controllers/Filter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Filter.cpp.i
+.PHONY : controllers/Filter.cpp.i
+
+controllers/Filter.s: controllers/Filter.cpp.s
+.PHONY : controllers/Filter.s
+
+# target to generate assembly for a file
+controllers/Filter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/Filter.cpp.s
+.PHONY : controllers/Filter.cpp.s
+
 controllers/server.obj: controllers/server.cpp.obj
 .PHONY : controllers/server.obj
 
@@ -322,6 +346,9 @@ help:
 	@echo ... controllers/Controller.obj
 	@echo ... controllers/Controller.i
 	@echo ... controllers/Controller.s
+	@echo ... controllers/Filter.obj
+	@echo ... controllers/Filter.i
+	@echo ... controllers/Filter.s
 	@echo ... controllers/server.obj
 	@echo ... controllers/server.i
 	@echo ... controllers/server.s

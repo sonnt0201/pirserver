@@ -74,7 +74,8 @@ void Server::run() {
             (bytesRead = recv(clientSocket, request, sizeof(request), 0) ) > 0
         ) {
              Request req = Request(request);
-            if (filter(req) == true) controller(clientSocket, req);
+             bool valid = filter(req);
+            if (valid) controller(clientSocket, req);
             closesocket(clientSocket);
         }
     }

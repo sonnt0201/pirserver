@@ -10,4 +10,3 @@ std::string toJson(std::vector<std::vector<std::string>> data);
     Controller knows nothing about server, just uses Resquest and Response
 */
 void controller(SOCKET client, Request request);
-

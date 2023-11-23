@@ -18,7 +18,7 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
 void controller(SOCKET client, Request request)
 {
 
-    if (request.method() == POST and request.path() == "/")
+    if (request.method() == POST )
     {
         std::string espId = request.value("esp-id"),
                     vol = request.value("vol"),
