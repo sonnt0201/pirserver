@@ -35,8 +35,7 @@ bool filter(Request request)
                 return 0;
         }
 
-        // return
-        return false;
+        
     }
 
     // Default:
