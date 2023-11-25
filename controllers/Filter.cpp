@@ -6,6 +6,7 @@ bool filter(Request request)
     // request
     if (request.method() == POST)
     {
+        std::cout<<request.getText()<<std::endl;
         // filter goes here
         std::string voltageStr = request.value("vol"),
                     idStr = request.value("esp-id"),
@@ -13,18 +14,20 @@ bool filter(Request request)
 
 
         // check empty string
-        if (voltageStr == "" || idStr == "" || timeStr == "") return 0;
+        if (voltageStr == "" || idStr == "" || timeStr == "") {std::cout<<"null \n" ; return 0;}
 
         // check unsigned
-        if (stoi(idStr) <= 0 || stoi(timeStr) <= 0) return 0;
+        for (char c : idStr) if (c < '0' || c > '9') return 0;
+        for (char c : timeStr) if (c < '0' || c > '9') return 0;
 
+        std::cout<<voltageStr<<std::endl;
         int count = 0;
         for (long i = 0; i < voltageStr.length(); i++)
         {
 
             // check number and '+'
             if ((voltageStr[i] < '0' || voltageStr[i] > '9') && (voltageStr[i] != '+'))
-                return 0;
+                {return 0;}
 
             if (voltageStr[i] != '+')
                 count++;
@@ -37,7 +40,8 @@ bool filter(Request request)
 
         
     }
-
+    
+    std::cout<<"Filter: accepted!"<<std::endl;
     // Default:
     return true;
 }
