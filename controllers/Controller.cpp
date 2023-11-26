@@ -7,7 +7,12 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
     std::string json = "{";
     for (long i = 0; i < vec.size(); i++)
     {
-        json += '\"' + vec[i][0] + "\": "  + vec[i][1];
+        std::string key = vec[i][0];
+
+        std::string value = vec[i][1];
+        // while (value[0] == '0') value.erase(0,1);
+
+        json += '\"' + key + "\": " + value;
         if (i < (vec.size() - 1))
             json += ',';
     }
@@ -17,9 +22,10 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
 
 void controller(SOCKET client, Request request)
 {
-
-    if (request.method() == POST )
+    
+    if (request.method() == POST)
     {
+
         std::string espId = request.value("esp-id"),
                     vol = request.value("vol"),
                     time = request.value("time");
@@ -31,12 +37,9 @@ void controller(SOCKET client, Request request)
             std::cout << "Request raw text: \n"
                       << request.getText() << "\n\n";
         }
-        // print to server
-        std::cout << "device id: " << espId << std::endl;
-        std::cout << "voltage: " << vol << std::endl;
-        std::cout << "time: " << time << std::endl<<std::endl;
 
         int rc = db.addData(std::stoi(espId), vol, std::stoi(time));
+        
         // init a response object
         if (rc != SQLITE_DONE)
         {
@@ -46,13 +49,13 @@ void controller(SOCKET client, Request request)
         }
         else
         {
+            
             Response response = Response(200, "text/plain");
             response.body = "Data saved sucessfully";
             response.sendClient(client);
         }
 
-        // send
-
+       
         return;
     }
 
@@ -89,7 +92,6 @@ void controller(SOCKET client, Request request)
         return;
     }
 
-
     // test page
     if (request.method() == GET && request.path() == "/test")
     {
@@ -100,5 +102,6 @@ void controller(SOCKET client, Request request)
         return;
     }
     // std::cout << request.getText();
+
     return;
 }

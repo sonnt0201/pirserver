@@ -147,4 +147,8 @@ CMakeFiles/main.dir/controllers/Controller.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc \
  c:\users\nguye\source\repos\pirserver\models\pirdb.hpp \
  c:\users\nguye\source\repos\pirserver\lib\sqlite3.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ctime c:\mingw\include\time.h
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ctime c:\mingw\include\time.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\chrono \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ratio \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\limits \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\parse_numbers.h

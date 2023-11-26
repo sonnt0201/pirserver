@@ -2,6 +2,7 @@
 #include "../models/Response.hpp"
 #include "../models/PIRDB.hpp"
 #include <string>
+#include<ctime>
 #pragma once
 
 std::string toJson(std::vector<std::vector<std::string>> data);

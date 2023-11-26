@@ -2,11 +2,11 @@
 
 bool filter(Request request)
 {
-    std::cout << "on filter... \n";
+    
     // request
     if (request.method() == POST)
     {
-        std::cout<<request.getText()<<std::endl;
+       
         // filter goes here
         std::string voltageStr = request.value("vol"),
                     idStr = request.value("esp-id"),
@@ -41,7 +41,7 @@ bool filter(Request request)
         
     }
     
-    std::cout<<"Filter: accepted!"<<std::endl;
+  
     // Default:
     return true;
 }

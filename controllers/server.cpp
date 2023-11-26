@@ -3,23 +3,23 @@
 #include "Filter.hpp"
 #pragma comment(lib, "Ws2_32.lib");
 
-Server::Server(int port) {
+Server::Server(int port)
+{
     this->port = port;
     // init ws
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
     {
         printf("WSAStartup failed. \n");
-        
     }
 
     // init server
     SOCKET serverSocket = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (serverSocket == INVALID_SOCKET) {
+    if (serverSocket == INVALID_SOCKET)
+    {
         printf("Fail to create socket server. \n");
         WSACleanup();
-       
     }
 
     this->serverSocket = serverSocket;
@@ -31,56 +31,69 @@ Server::Server(int port) {
 
     // bind socket to address config
     if (
-        bind(this->serverSocket, (struct sockaddr*) &serverAddress, sizeof(serverAddress)) == SOCKET_ERROR
-    ) {
+        bind(this->serverSocket, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) == SOCKET_ERROR)
+    {
         printf("Fail to bind ! \n");
         closesocket(this->serverSocket);
         WSACleanup();
-       
     };
-
-  
 };
 
-void Server::run() {
-   
+void Server::run()
+{
+
     // turn on listener
-    if ( listen(this->serverSocket, SOMAXCONN) == SOCKET_ERROR) {
+    if (listen(this->serverSocket, SOMAXCONN) == SOCKET_ERROR)
+    {
         printf("Fail to listen. \n");
         closesocket(serverSocket);
         WSACleanup();
         // return 1;
-
     }
 
-    printf("Server is listening on port 8080 ... \n");
+    printf("Server is listening on port 8080 ... \n\n");
 
-    while (1) {
-        // init client 
+    while (1)
+    {
+        // init client
         SOCKET clientSocket = accept(serverSocket, NULL, NULL);
-        if (clientSocket == INVALID_SOCKET) {
+        if (clientSocket == INVALID_SOCKET)
+        {
             printf("Fail to accept client connection. \n");
             WSACleanup();
-           
         }
 
         // vars def
         char request[8000] = "";
         int bytesRead;
-        
 
-        //MAIN PROCESS - RECEIVE REQUEST
+        // MAIN PROCESS - RECEIVE REQUEST
         while (
-            (bytesRead = recv(clientSocket, request, sizeof(request), 0) ) > 0
-        ) {
-             Request req = Request(request);
-             bool valid = filter(req);
-            if (valid) controller(clientSocket, req);
+            (bytesRead = recv(clientSocket, request, sizeof(request), 0)) > 0)
+        {
+            // Start timer
+            time_t now = time(0);
+            std::cout << "_______________ \n" << ctime(&now);
+            auto start = std::chrono::high_resolution_clock::now();
+            
+            // Init request object
+            Request req = Request(request);
+            int method = req.method();
+            std::string strMethod = (method == GET)? "GET": (method == POST) ? "POST" : (method == PUT) ? "PUT" : "DELETE";
+
+            // Delegate to filter and controller
+            bool valid = filter(req);
+            if (valid)
+                controller(clientSocket, req);
             closesocket(clientSocket);
+
+            // Counting time
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+            std::cout <<"Finish handling "<<strMethod<< " request in: " << duration.count() << " millisecs" << std::endl <<std::endl;
         }
     }
 
     closesocket(serverSocket);
     WSACleanup();
 }
-

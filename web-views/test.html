@@ -12,23 +12,9 @@
       <input type="text" id="esp-id" name="esp-id" placeholder="esp-id" />
       <input type="text" id="vol" name="vol" placeholder="voltage" />
       <input type="text" id="time" name="time" placeholder="time" />
-      <button onclick="send" >gửi đi</button>
+      <input type='submit' value="POST">
     </form>
 
-    <script>
-        const id = document.querySelector("esp-id").value;
-        const vol = document.querySelector("vol").value.replace('%2B','+');
-        console.log(vol);
-        const time = document.querySelector("time").value;
-      const send = () => {
-        fetch('localhost:8080', {
-          method: "POST",
-          body: `id=${id}&vol=${vol}&time=${time}`,
-          headers: {
-            
-          },
-        });
-      };
-    </script>
+    
   </body>
 </html>
