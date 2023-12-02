@@ -1,6 +1,6 @@
 #include "Controller.hpp"
 
-PIRDB db = PIRDB("esp32.db");
+PIRDB db = PIRDB(DEVELOPMENT);
 
 std::string toJson(std::vector<std::vector<std::string>> vec)
 {
@@ -22,7 +22,7 @@ std::string toJson(std::vector<std::vector<std::string>> vec)
 
 void controller(SOCKET client, Request request)
 {
-    
+
     if (request.method() == POST)
     {
 
@@ -39,7 +39,7 @@ void controller(SOCKET client, Request request)
         }
 
         int rc = db.addData(std::stoi(espId), vol, std::stoi(time));
-        
+
         // init a response object
         if (rc != SQLITE_DONE)
         {
@@ -49,13 +49,12 @@ void controller(SOCKET client, Request request)
         }
         else
         {
-            
+
             Response response = Response(200, "text/plain");
             response.body = "Data saved sucessfully";
             response.sendClient(client);
         }
 
-       
         return;
     }
 
@@ -92,16 +91,42 @@ void controller(SOCKET client, Request request)
         return;
     }
 
+    // Get number of row
+    if (request.method() == GET && request.path() == "/api/count")
+    {
+        int count = db.numOfRows();
+        if (count >= 0)
+        {
+            Response response = Response(200, "application/json");
+        }
+    }
+
     // test page
     if (request.method() == GET && request.path() == "/test")
     {
-        Response response = Response(200, "text/html");
-        response.setHtmlContent("test.html");
-        // printf("%s\n",response.rawText();
-        response.sendClient(client);
-        return;
+        if (db.fileName() == DEVELOPMENT)
+        {
+            Response response = Response(200, "text/html");
+            response.setHtmlContent("test.html");
+            // printf("%s\n",response.rawText();
+            response.sendClient(client);
+            return;
+        }
+        else
+        {
+            Response response = Response(404, "text/html");
+            response.setHtmlContent("404.html");
+            // printf("%s\n",response.rawText();
+            response.sendClient(client);
+            return;
+        }
     }
     // std::cout << request.getText();
 
+    // return 404
+    Response response = Response(404, "text/html");
+    response.setHtmlContent("404.html");
+    // printf("%s\n",response.rawText();
+    response.sendClient(client);
     return;
 }

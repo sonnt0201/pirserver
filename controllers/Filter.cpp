@@ -20,16 +20,16 @@ bool filter(Request request)
         for (char c : idStr) if (c < '0' || c > '9') return 0;
         for (char c : timeStr) if (c < '0' || c > '9') return 0;
 
-        std::cout<<voltageStr<<std::endl;
+        // std::cout<<voltageStr<<std::endl;
         int count = 0;
         for (long i = 0; i < voltageStr.length(); i++)
         {
 
             // check number and '+'
-            if ((voltageStr[i] < '0' || voltageStr[i] > '9') && (voltageStr[i] != '+'))
+            if ((voltageStr[i] < '0' || voltageStr[i] > '9') && (voltageStr[i] != SEPARATOR))
                 {return 0;}
 
-            if (voltageStr[i] != '+')
+            if (voltageStr[i] != SEPARATOR)
                 count++;
             else
                 count = 0;

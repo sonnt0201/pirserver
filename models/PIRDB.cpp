@@ -1,6 +1,9 @@
 #include "PIRDB.hpp"
 #include <string.h>
 
+
+
+
 static int callback(void *data, int argc, char **argv, char **azColName)
 {
     for (int i = 0; i < argc; i++)
@@ -14,6 +17,7 @@ PIRDB::PIRDB(std::string dbFileName)
 {
     // sqlite3 *db = this->db;
     // this->db = db;
+    this->_fileName = dbFileName;
     char *charf = strdup(dbFileName.c_str());
     int rc = sqlite3_open(charf, &this->db);
 
@@ -24,6 +28,9 @@ PIRDB::PIRDB(std::string dbFileName)
                                  "time INTEGER NOT NULL);";
 
     rc = sqlite3_exec(db, createTableSQL, 0, 0, 0);
+}
+std::string PIRDB::fileName() {
+    return this->_fileName;
 }
 
 int PIRDB::numOfRows()
@@ -82,7 +89,7 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
         std::string strVol = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
         for (int i = 0; i < strVol.length(); i++)
         {
-            if (strVol[i] == '+')
+            if (strVol[i] == SEPARATOR)
                 strVol[i] = ',';
         }
         strVol = '[' + strVol + ']';

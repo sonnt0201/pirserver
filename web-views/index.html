@@ -6,9 +6,9 @@
     <title>Document</title>
 
     <style>
-        h1{
-            text-align: center;
-        }
+      h1 {
+        text-align: center;
+      }
       table {
         width: 80%;
         margin: 0 auto 0;
@@ -26,8 +26,8 @@
         text-align: center;
       }
 
-      .header *{
-        background-color: #2E4374 ;
+      .header * {
+        background-color: #2e4374;
         color: white;
         font-weight: bolder;
       }
@@ -39,9 +39,9 @@
     </style>
   </head>
   <body>
-    <div class="root">
+    <div id="root">
       <h1>PIR DATABASE</h1>
-      <table id="database">
+      <table id="dbheader">
         <tr class="header">
           <th>ID</th>
           <th>ESP32 ID</th>
@@ -49,30 +49,44 @@
           <th>Time</th>
         </tr>
       </table>
+
+      <table id="dbcontent"></table>
     </div>
 
     <script>
-      const db = document.querySelector("#database");
-      
-    fetch('http://127.0.0.1:8080/api').then(response => response.json()).then(arr => {
-      arr.forEach(data => {
-        const rowHTML = `
+      const ADDR = "http://127.0.0.1:8080"
+
+      const db = document.querySelector("#dbcontent");
+
+      const rowHTML =(id, esp_id, voltage) =>  `
         <tr>
-          <td>${data.id}</td>
-          <td>${data.esp_id}</td>
-          <td>${data.voltage.map(val => `
+          <td>${id}</td>
+          <td>${esp_id}</td>
+          <td>${voltage
+            .map(
+              (val) => `
             <span class='num'> ${val}</span>
-            `).join(' ')}</td>
+            `
+            )
+            .join(" ")}</td>
           <td>${new Date(data.timestamp)}</td>
         </tr>
-      `;
+      `
+      const myInterval = setInterval(() => {
 
-      // Append the HTML content to the table using insertAdjacentHTML
-      db.insertAdjacentHTML('beforeend', rowHTML);
-      })
-       
+        db.innerHTML = "";
 
-    });   
+        fetch(`${ADDR}/api`)
+          .then((response) => response.json())
+          .then((arr) => {
+            arr.forEach((data) => {
+              const rowHTML = rowHTML(data.id, data.esp_id, data.voltage);
+
+              // Append the HTML content to the table using insertAdjacentHTML
+              db.insertAdjacentHTML("beforeend", rowHTML);
+            });
+          });
+      }, 1000);
     </script>
   </body>
 </html>

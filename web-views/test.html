@@ -6,15 +6,34 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>test api</h1>
-    <form method="post">
-      <label>Nhập nội dung test </label>
-      <input type="text" id="esp-id" name="esp-id" placeholder="esp-id" />
-      <input type="text" id="vol" name="vol" placeholder="voltage" />
-      <input type="text" id="time" name="time" placeholder="time" />
-      <input type='submit' value="POST">
-    </form>
+    <h1>This page is for API Testing</h1>
+    <h1>Sending data each 1 second ...</h1>
+    <script>
+      const url = "http://localhost:8080";
 
-    
+      setInterval(() => {
+        const randomNumbersArray = Array.from({ length: 100 }, () =>
+          Math.floor(Math.random() * 4097)
+        );
+
+        // Convert the array to a string with '_' separator
+        const vol = randomNumbersArray.join("_");
+
+        const now = Math.floor(Date.now() / 1000);
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Set the content type to form data
+            // Add any other headers if needed
+          },
+          body: `esp-id=1&vol=${vol}&time=${now}`, // Convert the form data to a string
+        };
+
+        // Make the POST request using fetch
+        fetch(url, requestOptions);
+      }, 1000);
+
+
+    </script>
   </body>
 </html>
