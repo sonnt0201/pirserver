@@ -219,7 +219,7 @@ int PIRDB::allToCSV()
 };
 
 /* TO-DO: Implement method recordWithID() */ 
-RecordRow PIRDB::recordWithID(int ID) {
+class RecordRow PIRDB::recordWithID(int ID) {
     /* Code goes here */
 };
 

@@ -43,7 +43,7 @@ class PIRDB {
     std::vector<std::string> getDataWithID(int ID);
 
     // TO-DO: implement method  
-    RecordRow recordWithID(int ID);
+    class RecordRow recordWithID(int ID);
 
     /* Add data to database - return SQLITE_DONE if saving sucessfully */
     int addData(int deviceID, std::string vol, int time);
