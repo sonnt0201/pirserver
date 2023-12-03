@@ -218,5 +218,25 @@ int PIRDB::allToCSV()
     return SUCCESS;
 };
 
-// TO-DO: Implement class RecordRow
+// TO-DO: Implement method recordWithID()
+RecordRow PIRDB::recordWithID(int ID) {
 
+};
+
+// TO-DO: Implement class RecordRow
+RecordRow::RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]){
+
+};
+
+int id(){
+
+};
+int espID(){
+    
+};
+int timestamp(){
+
+};
+std::vector<int> voltage(){
+
+};
