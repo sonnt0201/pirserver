@@ -44,7 +44,7 @@ class PIRDB {
 
     // TO-DO: implement method  
     RecordRow recordWithID(int ID);
-    
+
     /* Add data to database - return SQLITE_DONE if saving sucessfully */
     int addData(int deviceID, std::string vol, int time);
     
@@ -55,17 +55,16 @@ class PIRDB {
     // int getData
 };
 
-// TO-DO: Implement Request Row class
+/* TO-DO: Implement Request Row class */ 
 class RecordRow {
     private:
-    int id, espID, timestamp, voltage[VOLNUM];
+    int _id, _espID, _timestamp, _voltage[VOLNUM];
     public:
 
-    // Init function
+    /* Init function */ 
     RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]);
 
-    // Note: id, espID, timestamp, voltage is initialized only in init function (above), after initialized, they are READONLY
-    int id();
+    /* Note: id, espID, timestamp, voltage is initialized only in init function (above), after initialized, they are READONLY */     int id();
     int espID();
     int timestamp();
     std::vector <int> voltage();
