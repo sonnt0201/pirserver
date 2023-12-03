@@ -1,9 +1,6 @@
 #include "PIRDB.hpp"
 #include <string.h>
 
-
-
-
 static int callback(void *data, int argc, char **argv, char **azColName)
 {
     for (int i = 0; i < argc; i++)
@@ -29,7 +26,9 @@ PIRDB::PIRDB(std::string dbFileName)
 
     rc = sqlite3_exec(db, createTableSQL, 0, 0, 0);
 }
-std::string PIRDB::fileName() {
+
+std::string PIRDB::fileName()
+{
     return this->_fileName;
 }
 
@@ -63,6 +62,9 @@ int PIRDB::numOfRows()
 
 std::vector<std::string> PIRDB::getDataWithID(int ID)
 {
+    // Start timer
+    //  auto start = std::chrono::high_resolution_clock::now();
+
     std::vector<std::string> result;
 
     const char *selectDataSQL = "SELECT esp_id, vol, time FROM pir WHERE id = ?;";
@@ -201,7 +203,7 @@ int PIRDB::allToCSV()
         vol.erase(0, 1);
         vol.erase(vol.length() - 1, 1);
         csv << vol;
-        csv << data[2] << std::endl;
+        csv << "," << data[2] << std::endl;
     };
 
     // delete table's content
@@ -214,4 +216,7 @@ int PIRDB::allToCSV()
     std::cout << "Create and write csv file in : " << duration.count() << " millisecs" << std::endl;
 
     return SUCCESS;
-}
+};
+
+// TO-DO: Implement class RecordRow
+

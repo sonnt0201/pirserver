@@ -17,6 +17,8 @@ class Response {
         std::string accessControl = "";
         std::string setJsonContent();
     public:
+
+        // Initialization
         Response(int status, std::string contentType );
         std::string htmlPath;
         std::string jsonData;

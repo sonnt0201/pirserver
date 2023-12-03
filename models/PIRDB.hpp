@@ -10,13 +10,18 @@
 
 #pragma once
 
-#define DEVELOPMENT "development.db"
+#define DEVELOPMENT "./db/development.db"
 #define PRODUCT "esp32.db"
 #define SUCCESS 1
 #define FAIL 0
+
 #define ROWMAX 10
+
+// Separator for voltage data string
 #define SEPARATOR '_'
 
+// Number of voltage sent from Request
+#define VOLNUM 100
 
 
 /* 
@@ -37,8 +42,31 @@ class PIRDB {
     int numOfRows();
     std::vector<std::string> getDataWithID(int ID);
 
+    // TO-DO: implement method  
+    RecordRow recordWithID(int ID);
+    
     /* Add data to database - return SQLITE_DONE if saving sucessfully */
     int addData(int deviceID, std::string vol, int time);
     
     int allToCSV() ;
+
+    
+    
+    // int getData
+};
+
+// TO-DO: Implement Request Row class
+class RecordRow {
+    private:
+    int id, espID, timestamp, voltage[VOLNUM];
+    public:
+
+    // Init function
+    RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]);
+
+    // Note: id, espID, timestamp, voltage is initialized only in init function (above), after initialized, they are READONLY
+    int id();
+    int espID();
+    int timestamp();
+    std::vector <int> voltage();
 };

@@ -24,8 +24,11 @@ std::string Request::path()
     std::string request = this->rawText;
     // Find the start and end index of the path in the request string
     size_t start = request.find(" ") + 1;
-    size_t end = request.find(" ", start);
+    size_t nextSpace = request.find(" ", start);
+    size_t nextQues = request.find("?", start);
 
+    size_t end = std::min(nextSpace, nextQues);
+    
     // Extract the substring representing the path
     std::string path = request.substr(start, end - start);
 

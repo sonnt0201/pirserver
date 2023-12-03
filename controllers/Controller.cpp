@@ -98,30 +98,57 @@ void controller(SOCKET client, Request request)
         if (count >= 0)
         {
             Response response = Response(200, "application/json");
+            std::string body = "";
+            std::vector<std::vector<std::string>> str = {{"count", std::to_string(count)}};
+            body += toJson(str);
+            response.body = body;
+            response.sendClient(client);
+            return;
         }
     }
 
     // test page
-    if (request.method() == GET && request.path() == "/test")
+    if (request.method() == GET && request.path() == "/test" && db.fileName() == DEVELOPMENT)
     {
-        if (db.fileName() == DEVELOPMENT)
-        {
-            Response response = Response(200, "text/html");
-            response.setHtmlContent("test.html");
-            // printf("%s\n",response.rawText();
-            response.sendClient(client);
-            return;
-        }
-        else
-        {
-            Response response = Response(404, "text/html");
-            response.setHtmlContent("404.html");
-            // printf("%s\n",response.rawText();
-            response.sendClient(client);
-            return;
-        }
+
+        Response response = Response(200, "text/html");
+        response.setHtmlContent("test.html");
+        // printf("%s\n",response.rawText();
+        response.sendClient(client);
+        return;
     }
     // std::cout << request.getText();
+
+    if (request.method() == GET && request.path() == "/api/range")
+    {
+        int begin = stoi(request.value("begin"));
+        int end = stoi(request.value("end"));
+        Response response = Response(200, "application/json");
+        std::string body = "[";
+
+        for (int i = begin; i <= end; i++)
+        {
+            std::vector<std::string> data = db.getDataWithID(i);
+            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"timestamp", data[2]}};
+            body += toJson(str);
+
+            if (i < end)
+            {
+                body += ",";
+            }
+        }
+
+        body += "]";
+        response.body = body;
+        response.sendClient(client);
+        return;
+        return;
+    }
+
+    if (request.method() == PUT && request.path() == "/tocsv") {
+        db.allToCSV();
+        
+    }
 
     // return 404
     Response response = Response(404, "text/html");
