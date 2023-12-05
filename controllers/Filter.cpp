@@ -41,6 +41,20 @@ bool filter(Request request)
         
     }
     
+    if (request.method() == GET && request.path() == "/api/range") {
+        std::string sBegin = request.value("begin");
+        std::string sEnd = request.value("end");
+        if (sBegin == "" || sEnd == "") {std::cout<<"null \n";return 0;}
+        if (sBegin[0] == '0' || sEnd[0] == '0'){std::cout<<"Invalid number in request params. \n" ;return 0;}
+        for (long i = 0; i < sBegin.length() ;i++) if (sBegin[i] < '0' || sBegin[i] > '9') return 0;
+        for (long i = 0; i < sEnd.length() ;i++) if (sEnd[i] < '0' || sEnd[i] > '9') return 0;
+
+        int iBegin = std::stoi(sBegin);
+        int iEnd = std::stoi(sEnd);
+
+        if (iBegin > iEnd) return 0;
+        return 1;
+    }
   
     // Default:
     return true;
