@@ -131,7 +131,16 @@ void controller(SOCKET client, Request request)
         int begin = stoi(request.value("begin"));
         int end = stoi(request.value("end"));
         Response response = Response(200, "application/json");
-        std::string body = "[";
+
+        // set meta value to json
+        std::vector<std::vector<std::string>> metaStr = {{"start-id", std::to_string(begin)}, {"end-id", std::to_string(end)}};
+        std::string body = " { \"meta\" : " + toJson(metaStr);
+
+        // set main value to json
+        body += ", \"payload\" : ";
+        body += "[";
+
+        
 
         for (int i = begin; i <= end; i++)
         {
@@ -145,7 +154,7 @@ void controller(SOCKET client, Request request)
             }
         }
 
-        body += "]";
+        body += "] }";
         response.body = body;
         response.sendClient(client);
         return;
