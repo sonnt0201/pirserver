@@ -31,7 +31,6 @@
 class PIRDB {
     private:
         sqlite3* db;
-        int deleteAllTableContent() ;
         std::string _fileName;
     public:
     /*
@@ -41,7 +40,7 @@ class PIRDB {
     PIRDB(std::string dbFileName);
     int numOfRows();
     std::vector<std::string> getDataWithID(int ID);
-
+    int deleteAllTableContent() ;
     // TO-DO: implement method  
     class RecordRow recordWithID(int ID);
 
@@ -50,6 +49,7 @@ class PIRDB {
     
     int allToCSV() ;
 
+    
     
     
     // int getData

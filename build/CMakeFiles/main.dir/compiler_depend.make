@@ -4,6 +4,7 @@
 CMakeFiles/main.dir/controllers/Controller.cpp.obj: C:/Users/nguye/source/repos/pirserver/controllers/Controller.cpp \
   C:/Users/nguye/source/repos/pirserver/controllers/Controller.hpp \
   C:/MinGW/include/_mingw.h \
+  C:/MinGW/include/_ptw32.h \
   C:/MinGW/include/_winsock.h \
   C:/MinGW/include/basetsd.h \
   C:/MinGW/include/basetyps.h \
@@ -38,6 +39,8 @@ CMakeFiles/main.dir/controllers/Controller.cpp.obj: C:/Users/nguye/source/repos/
   C:/MinGW/include/prsht.h \
   C:/MinGW/include/pshpack2.h \
   C:/MinGW/include/pshpack4.h \
+  C:/MinGW/include/pthread.h \
+  C:/MinGW/include/ptw32_errno.h \
   C:/MinGW/include/rpc.h \
   C:/MinGW/include/rpcdce.h \
   C:/MinGW/include/rpcdcep.h \
@@ -45,6 +48,7 @@ CMakeFiles/main.dir/controllers/Controller.cpp.obj: C:/Users/nguye/source/repos/
   C:/MinGW/include/rpcnsi.h \
   C:/MinGW/include/rpcnsip.h \
   C:/MinGW/include/rpcnterr.h \
+  C:/MinGW/include/sched.h \
   C:/MinGW/include/sdkddkver.h \
   C:/MinGW/include/shellapi.h \
   C:/MinGW/include/stdint.h \
@@ -320,6 +324,7 @@ CMakeFiles/main.dir/controllers/server.cpp.obj: C:/Users/nguye/source/repos/pirs
   C:/Users/nguye/source/repos/pirserver/controllers/Filter.hpp \
   C:/Users/nguye/source/repos/pirserver/controllers/server.hpp \
   C:/MinGW/include/_mingw.h \
+  C:/MinGW/include/_ptw32.h \
   C:/MinGW/include/_winsock.h \
   C:/MinGW/include/basetsd.h \
   C:/MinGW/include/basetyps.h \
@@ -354,6 +359,8 @@ CMakeFiles/main.dir/controllers/server.cpp.obj: C:/Users/nguye/source/repos/pirs
   C:/MinGW/include/prsht.h \
   C:/MinGW/include/pshpack2.h \
   C:/MinGW/include/pshpack4.h \
+  C:/MinGW/include/pthread.h \
+  C:/MinGW/include/ptw32_errno.h \
   C:/MinGW/include/rpc.h \
   C:/MinGW/include/rpcdce.h \
   C:/MinGW/include/rpcdcep.h \
@@ -361,6 +368,7 @@ CMakeFiles/main.dir/controllers/server.cpp.obj: C:/Users/nguye/source/repos/pirs
   C:/MinGW/include/rpcnsi.h \
   C:/MinGW/include/rpcnsip.h \
   C:/MinGW/include/rpcnterr.h \
+  C:/MinGW/include/sched.h \
   C:/MinGW/include/sdkddkver.h \
   C:/MinGW/include/shellapi.h \
   C:/MinGW/include/stdint.h \
@@ -1207,7 +1215,13 @@ C:/MinGW/include/rpc.h:
 
 C:/MinGW/include/_mingw.h:
 
-C:/MinGW/include/windef.h:
+C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.h:
+
+C:/MinGW/include/commdlg.h:
+
+C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/initializer_list:
+
+C:/MinGW/include/_ptw32.h:
 
 C:/MinGW/include/_winsock.h:
 
@@ -1220,10 +1234,6 @@ C:/MinGW/include/cderr.h:
 C:/MinGW/include/objbase.h:
 
 C:/MinGW/include/cguid.h:
-
-C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.h:
-
-C:/MinGW/include/commdlg.h:
 
 C:/MinGW/include/ctype.h:
 
@@ -1293,8 +1303,6 @@ C:/MinGW/include/poppack.h:
 
 C:/MinGW/include/w32api.h:
 
-C:/MinGW/include/windows.h:
-
 C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++allocator.h:
 
 C:/MinGW/include/wchar.h:
@@ -1307,9 +1315,15 @@ C:/MinGW/include/pshpack2.h:
 
 C:/MinGW/include/pshpack4.h:
 
-C:/MinGW/include/rpcdce.h:
+C:/MinGW/include/pthread.h:
+
+C:/MinGW/include/sched.h:
 
 C:/MinGW/include/rpcdcep.h:
+
+C:/MinGW/include/ptw32_errno.h:
+
+C:/MinGW/include/rpcdce.h:
 
 C:/MinGW/include/rpcndr.h:
 
@@ -1332,6 +1346,10 @@ C:/MinGW/include/winbase.h:
 C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/gthr-default.h:
 
 C:/MinGW/include/wincon.h:
+
+C:/MinGW/include/windef.h:
+
+C:/MinGW/include/windows.h:
 
 C:/MinGW/include/winerror.h:
 
@@ -1498,8 +1516,6 @@ C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/ext/type_traits.h:
 C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/system_error:
 
 C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/fstream:
-
-C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/initializer_list:
 
 C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/iosfwd:
 

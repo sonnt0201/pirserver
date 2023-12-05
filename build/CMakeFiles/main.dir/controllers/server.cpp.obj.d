@@ -152,4 +152,7 @@ CMakeFiles/main.dir/controllers/server.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\limits \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\parse_numbers.h \
  C:\Users\nguye\source\repos\pirserver\controllers\Controller.hpp \
+ c:\mingw\include\pthread.h c:\mingw\include\_ptw32.h \
+ c:\mingw\include\ptw32_errno.h c:\mingw\include\winsock.h \
+ c:\mingw\include\sched.h \
  C:\Users\nguye\source\repos\pirserver\controllers\Filter.hpp

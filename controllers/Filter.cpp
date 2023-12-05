@@ -6,7 +6,7 @@ bool filter(Request request)
     // request
     if (request.method() == POST)
     {
-       
+    //    std::cout<<request.getText()<<"\n";
         // filter goes here
         std::string voltageStr = request.value("vol"),
                     idStr = request.value("esp-id"),

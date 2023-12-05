@@ -151,4 +151,7 @@ CMakeFiles/main.dir/controllers/Controller.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\chrono \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ratio \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\limits \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\parse_numbers.h
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\parse_numbers.h \
+ c:\mingw\include\pthread.h c:\mingw\include\_ptw32.h \
+ c:\mingw\include\ptw32_errno.h c:\mingw\include\winsock.h \
+ c:\mingw\include\sched.h

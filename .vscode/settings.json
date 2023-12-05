@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.txt": "cpp",
         "functional": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -44,6 +45,10 @@
         "cinttypes": "cpp",
         "ctime": "cpp",
         "chrono": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "condition_variable": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "thread": "cpp"
     }
 }

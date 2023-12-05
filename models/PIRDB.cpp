@@ -19,7 +19,7 @@ PIRDB::PIRDB(std::string dbFileName)
     int rc = sqlite3_open(charf, &this->db);
 
     const char *createTableSQL = "CREATE TABLE IF NOT EXISTS pir ("
-                                 "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                                 "id INTEGER PRIMARY KEY,"
                                  "esp_id INTEGER NOT NULL,"
                                  "vol VARCHAR NOT NULL,"
                                  "time INTEGER NOT NULL);";
@@ -101,7 +101,7 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
     }
     else
     {
-        std::cerr << "Query failed: " << sqlite3_errmsg(db) << std::endl;
+        std::cout << "Query failed with id  "<< ID << ": " << sqlite3_errmsg(db)  << std::endl;
     }
 
     // Finalize the statement
@@ -113,8 +113,8 @@ std::vector<std::string> PIRDB::getDataWithID(int ID)
 int PIRDB::addData(int deviceID, std::string vol, int time)
 {
     auto start = std::chrono::high_resolution_clock::now();
-    const char *query = "INSERT INTO pir (esp_id, vol, time)"
-                        "VALUES ( ?, ? , ?);";
+    const char *query = "INSERT INTO pir (id, esp_id, vol, time)"
+                        "VALUES (?, ?, ? , ?);";
 
     sqlite3_stmt *stmt;
 
@@ -126,11 +126,13 @@ int PIRDB::addData(int deviceID, std::string vol, int time)
     {
         std::cerr << "Cannot prepare the statement: " << sqlite3_errmsg(this->db) << std::endl;
     }
+    // set next id
+    int nextID = this->numOfRows() + 1;
+    sqlite3_bind_int(stmt, 1, nextID);
+    sqlite3_bind_int(stmt, 2, deviceID);
+    sqlite3_bind_text(stmt, 3, strdup(vol.c_str()), -1, NULL);
 
-    sqlite3_bind_int(stmt, 1, deviceID);
-    sqlite3_bind_text(stmt, 2, strdup(vol.c_str()), -1, NULL);
-
-    sqlite3_bind_int(stmt, 3, time);
+    sqlite3_bind_int(stmt, 4, time);
 
     rc = sqlite3_step(stmt);
     if (rc != SQLITE_DONE)
@@ -155,7 +157,7 @@ int PIRDB::addData(int deviceID, std::string vol, int time)
 int PIRDB::deleteAllTableContent()
 {
     auto start = std::chrono::high_resolution_clock::now();
-    const char *query = "DELETE FROM pir";
+    const char *query = "DELETE FROM pir;";
     sqlite3_stmt *stmt;
     int rc;
     rc = sqlite3_prepare_v2(this->db, query, -1, &stmt, 0);
@@ -215,6 +217,7 @@ int PIRDB::allToCSV()
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     std::cout << "Create and write csv file in : " << duration.count() << " millisecs" << std::endl;
 
+    
     return SUCCESS;
 };
 

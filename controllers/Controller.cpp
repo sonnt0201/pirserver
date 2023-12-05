@@ -54,7 +54,7 @@ void controller(SOCKET client, Request request)
             response.body = "Data saved sucessfully";
             response.sendClient(client);
         }
-
+       
         return;
     }
 
@@ -71,9 +71,16 @@ void controller(SOCKET client, Request request)
     {
         Response response = Response(200, "application/json");
         int numRows = db.numOfRows();
-        std::string body = "[";
 
-        for (int i = 1; i <= numRows; i++)
+        // set meta value to json
+        std::vector<std::vector<std::string>> metaStr = {{"start-id", std::to_string(std::max(numRows - 1000, 1))}, {"end-id", std::to_string(numRows)}};
+        std::string body = " { \"meta\" : " + toJson(metaStr);
+
+        // set main value to json
+        body += ", \"payload\" : ";
+        body += "[";
+
+        for (int i = std::max(numRows - 1000, 1); i <= numRows; i++)
         {
             std::vector<std::string> data = db.getDataWithID(i);
             std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"timestamp", data[2]}};
@@ -85,7 +92,7 @@ void controller(SOCKET client, Request request)
             }
         }
 
-        body += "]";
+        body += "] }";
         response.body = body;
         response.sendClient(client);
         return;
@@ -145,11 +152,18 @@ void controller(SOCKET client, Request request)
         return;
     }
 
-    if (request.method() == PUT && request.path() == "/tocsv") {
+    if (request.method() == PUT && request.path() == "/tocsv")
+    {
         db.allToCSV();
-        
+        return;
     }
 
+    if (request.method() == DEL && request.path() == "/all")
+    {
+        db.deleteAllTableContent();
+        return;
+        
+    }
     // return 404
     Response response = Response(404, "text/html");
     response.setHtmlContent("404.html");

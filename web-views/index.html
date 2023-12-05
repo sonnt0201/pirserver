@@ -54,11 +54,11 @@
     </div>
 
     <script>
-      const ADDR = "http://127.0.0.1:8080"
+      const ADDR = "http://localhost:8080"
 
       const db = document.querySelector("#dbcontent");
 
-      const rowHTML =(id, esp_id, voltage) =>  `
+      const rowHTML =(id, esp_id, voltage, timestamp) =>  `
         <tr>
           <td>${id}</td>
           <td>${esp_id}</td>
@@ -69,24 +69,32 @@
             `
             )
             .join(" ")}</td>
-          <td>${new Date(data.timestamp)}</td>
+          <td>${new Date(timestamp)}</td>
         </tr>
       `
-      const myInterval = setInterval(() => {
+      
+
+      fetch(`${ADDR}/api`)
+          .then((response) => response.json())
+          .then((data) => {
+
+            const arr = data["payload"]
+            console.log(arr);
+            arr.forEach(ele => {
+              console.log(ele)
+              const row = rowHTML(ele["id"], ele["esp_id"], ele["voltage"], ele['timestamp']);
+              
+              // Append the HTML content to the table using insertAdjacentHTML
+              db.insertAdjacentHTML("beforeend", row);
+            });
+          });
+
+     
 
         db.innerHTML = "";
 
-        fetch(`${ADDR}/api`)
-          .then((response) => response.json())
-          .then((arr) => {
-            arr.forEach((data) => {
-              const rowHTML = rowHTML(data.id, data.esp_id, data.voltage);
-
-              // Append the HTML content to the table using insertAdjacentHTML
-              db.insertAdjacentHTML("beforeend", rowHTML);
-            });
-          });
-      }, 1000);
+        
+      
     </script>
   </body>
 </html>
