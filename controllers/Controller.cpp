@@ -2,25 +2,149 @@
 
 PIRDB db = PIRDB(DEVELOPMENT);
 
-std::string toJson(std::vector<std::vector<std::string>> vec)
+// log the time of handling request
+
+std::stringstream ssLogger;
+// return TERMINATE | CONTINUE
+MAPPER v2(int client, Request request);
+MAPPER v1(int client, Request request);
+
+// register multiple api versions here.
+void controller(int client, Request request)
 {
-    std::string json = "{";
-    for (long i = 0; i < vec.size(); i++)
+    
+    // api version 2
+    if (v2(client, request) == TERMINATE)
+        return;
+
+    // api version 1
+    if (v1(client, request) == TERMINATE)
+        return;
+
+    send404(client);
+}
+
+MAPPER v2(int client, Request request)
+{
+
+    if (request.method() == GET && request.path() == "/api/v2")
     {
-        std::string key = vec[i][0];
 
-        std::string value = vec[i][1];
-        // while (value[0] == '0') value.erase(0,1);
+        // Get value
+        std::string strBegin = request.value("begin"),
+                    strEnd = request.value("end");
 
-        json += '\"' + key + "\": " + value;
-        if (i < (vec.size() - 1))
-            json += ',';
+        long int begin = 0, end = 0;
+        begin = stringToUInt(strBegin);
+
+        if (strEnd == "")
+            end = time(NULL);
+        else
+            end = stringToUInt(strEnd);
+
+        std::cout << begin << " " << end << "\n";
+        // Get record
+        std::vector<Record> records = db.recordsWithTimestamp(begin, end);
+        std::cout << records.size();
+
+        std::vector<std::string> rows = {};
+
+        // TO-DO; push data to the "rows" array
+        // Guard for empty array
+        if (records.size() > 0)
+        {
+            rows.push_back(records[0].csvTitleRow());
+
+            for (Record &record : records)
+            {
+                rows.push_back(record.toCsvRow());
+            }
+
+            // set data
+        }
+
+        // std::cout<<root<<"\n";
+        // std::cout<<jsonArr<<"\n";
+        Response response = Response(200, TEXT_CSV);
+        response.setCsvContent(rows);
+
+        response.sendClient(client);
+        return TERMINATE;
+    };
+
+    if (request.method() == GET && request.path() == "/api/v2/range")
+    {
+        // std::cout<<"on /api/range/ \n";
+        std::vector<Record> records = {};
+        long int range;
+        if (request.value("range") == "")
+            range = ROWMAX;
+        else
+            range = stringToUInt(request.value("range"));
+        if ((request.value("begin")) != "")
+        {
+            long int begin = stringToUInt(request.value("begin"));
+            // range = stringToUInt(request.value("range"));
+            // std::cout<<"\nbegin "<<begin<<"\n"<<"range "<<range;
+            records = db.recordsWithBeginTime(begin, range);
+        }
+
+        if ((request.value("end")) != "")
+        {
+            long int end = stringToUInt(request.value("end"));
+            // range = stringToUInt(request.value("range"));
+            // std::cout<<"\nend "<<end<<"\n"<<"range "<<range;
+            records = db.recordsWithEndTime(end, range);
+        }
+
+        // rows init
+        std::vector<std::string> rows = {};
+        if (records.size() > 0)
+            rows.push_back(records[0].csvTitleRow());
+        for (auto &record : records)
+        {
+            rows.push_back(record.toCsvRow());
+        }
+
+        // config response and send
+        Response response = Response(200, TEXT_CSV);
+        response.setCsvContent(rows);
+        response.sendClient(client);
+
+        return TERMINATE;
     }
-    json += "}";
-    return json; // Add this return statement
+
+    if (request.method() == PUT && request.path() == "/api/v2/logger") {
+        std::ofstream logger("time.csv");
+        if (!logger.is_open()) {
+            std::cout<<"Failed to open log file. \n";
+            return TERMINATE;
+        } 
+        logger<<"rows,time(millisecs)\n";
+        logger << ssLogger.str();
+        
+        logger.close();
+        Response response = Response(200, TEXT_PLAIN);
+        response.setPlainContent("Create log file successfully.\n");
+        response.sendClient(client);
+        return TERMINATE;
+
+    }
+
+    if (request.method() == DEL && request.path() == "/api/v2/logger") {
+        ssLogger.clear();
+        ssLogger.str("");
+        Response response = Response(200, TEXT_PLAIN);
+        response.setPlainContent("Clear log value successfully.\n");
+        response.sendClient(client);
+        return TERMINATE;
+    }
+
+    // end of v2 mapper
+    return CONTINUE;
 };
 
-void controller(SOCKET client, Request request)
+MAPPER v1(int client, Request request)
 {
 
     if (request.method() == POST)
@@ -30,88 +154,109 @@ void controller(SOCKET client, Request request)
                     vol = request.value("vol"),
                     time = request.value("time");
 
-        if (espId == "" || vol == "" || time == "")
-        {
-            std::cout << "Request param value error"
-                      << "\n";
-            std::cout << "Request raw text: \n"
-                      << request.getText() << "\n\n";
-        }
-
         int rc = db.addData(std::stoi(espId), vol, std::stoi(time));
 
         // init a response object
         if (rc != SQLITE_DONE)
         {
             Response response = Response(500, "text/plain");
-            response.body = "Failed to saving data !";
+            response.setPlainContent("Failed to saving data !");
             response.sendClient(client);
         }
         else
         {
 
             Response response = Response(200, "text/plain");
-            response.body = "Data saved sucessfully";
+            response.setPlainContent("Data saved sucessfully");
             response.sendClient(client);
         }
-       
-        return;
+
+        return TERMINATE;
     }
 
-    if (request.method() == GET && request.path() == "/")
+    if (request.method() == GET && request.path() == "/api/v1")
     {
-        Response response = Response(200, "text/html");
-        response.setHtmlContent("index.html");
-        // printf("%s\n",response.rawText();
-        response.sendClient(client);
-        return;
-    }
 
-    if (request.method() == GET && request.path() == "/api")
-    {
-        Response response = Response(200, "application/json");
-        int numRows = db.numOfRows();
+        // Get value
+        std::string strBegin = request.value("begin"),
+                    strEnd = request.value("end");
 
-        // set meta value to json
-        std::vector<std::vector<std::string>> metaStr = {{"start-id", std::to_string(std::max(numRows - 1000, 1))}, {"end-id", std::to_string(numRows)}};
-        std::string body = " { \"meta\" : " + toJson(metaStr);
+        long int begin = 0, end = 0;
+        begin = stringToUInt(strBegin);
 
-        // set main value to json
-        body += ", \"payload\" : ";
-        body += "[";
+        if (strEnd == "")
+            end = time(NULL);
+        else
+            end = stringToUInt(strEnd);
 
-        for (int i = std::max(numRows - 1000, 1); i <= numRows; i++)
+        std::cout << begin << " " << end << "\n";
+        // Get record
+        std::vector<Record> records = db.recordsWithTimestamp(begin, end);
+        std::cout << records.size();
+
+        // init json object
+        // set meta
+        Json::Value root;
+        root["meta"]["number_of_records"] = records.size();
+
+        // Guard for empty array
+        if (records.size() > 0)
         {
-            std::vector<std::string> data = db.getDataWithID(i);
-            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"timestamp", data[2]}};
-            body += toJson(str);
 
-            if (i < numRows)
+            root["meta"]["time_begin"] = records[0].getTimestamp();
+            root["meta"]["time_end"] = records[records.size() - 1].getTimestamp();
+            root["records"] = Json::arrayValue;
+
+            Json::Value recordsArr = Json::arrayValue;
+
+            for (Record &record : records)
             {
-                body += ",";
+
+                recordsArr.append(record.toJson());
             }
+
+            // set data
+
+            root["records"] = recordsArr;
         }
 
-        body += "] }";
-        response.body = body;
+        // std::cout<<root<<"\n";
+        // std::cout<<jsonArr<<"\n";
+        Response response = Response(200, APPLICATION_JSON);
+        response.setJsonContent(root);
         response.sendClient(client);
-        return;
+        return TERMINATE;
+    }
+
+    if (request.method() == GET && request.path() == "/api/v1/with-id")
+    {
+        int id = stringToUInt(request.value("id"));
+        class Record result = db.recordWithID(id);
+
+        if (!result.toJson().isNull())
+        {
+            Response response = Response(200, APPLICATION_JSON);
+            response.setJsonContent(result.toJson());
+            response.sendClient(client);
+            return TERMINATE;
+        }
+
+        send404(client);
+        return TERMINATE;
     }
 
     // Get number of row
-    if (request.method() == GET && request.path() == "/api/count")
+    if (request.method() == GET && request.path() == "/api/v1/count")
     {
-        int count = db.numOfRows();
-        if (count >= 0)
-        {
-            Response response = Response(200, "application/json");
-            std::string body = "";
-            std::vector<std::vector<std::string>> str = {{"count", std::to_string(count)}};
-            body += toJson(str);
-            response.body = body;
-            response.sendClient(client);
-            return;
-        }
+        int count = db.numOfRows(), oldest = db.oldestTimestamp(), latest = db.latestTimestamp();
+        Response response = Response(200, APPLICATION_JSON);
+        Json::Value root;
+        root["count"] = count;
+        root["oldest_timestamp"] = oldest;
+        root["latest_timestamp"] = latest;
+        response.setJsonContent(root);
+        response.sendClient(client);
+        return TERMINATE;
     }
 
     // test page
@@ -122,61 +267,96 @@ void controller(SOCKET client, Request request)
         response.setHtmlContent("test.html");
         // printf("%s\n",response.rawText();
         response.sendClient(client);
-        return;
+        return TERMINATE;
     }
     // std::cout << request.getText();
 
-    if (request.method() == GET && request.path() == "/api/range")
+    if (request.method() == GET && request.path() == "/api/v1/range")
     {
-        int begin = stoi(request.value("begin"));
-        int end = stoi(request.value("end"));
-        Response response = Response(200, "application/json");
+        // start timer
+        auto start = std::chrono::high_resolution_clock::now();
 
-        // set meta value to json
-        std::vector<std::vector<std::string>> metaStr = {{"start-id", std::to_string(begin)}, {"end-id", std::to_string(end)}};
-        std::string body = " { \"meta\" : " + toJson(metaStr);
-
-        // set main value to json
-        body += ", \"payload\" : ";
-        body += "[";
-
-        
-
-        for (int i = begin; i <= end; i++)
+        // std::cout<<"on /api/range/ \n";
+        std::vector<Record> records = {};
+        long int range;
+        if (request.value("range") == "")
+            range = ROWMAX;
+        else
+            range = stringToUInt(request.value("range"));
+        if ((request.value("begin")) != "")
         {
-            std::vector<std::string> data = db.getDataWithID(i);
-            std::vector<std::vector<std::string>> str = {{"id", std::to_string(i)}, {"esp_id", data[0]}, {"voltage", data[1]}, {"timestamp", data[2]}};
-            body += toJson(str);
-
-            if (i < end)
-            {
-                body += ",";
-            }
+            long int begin = stringToUInt(request.value("begin"));
+            // range = stringToUInt(request.value("range"));
+            // std::cout<<"\nbegin "<<begin<<"\n"<<"range "<<range;
+            records = db.recordsWithBeginTime(begin, range);
         }
 
-        body += "] }";
-        response.body = body;
+        if ((request.value("end")) != "")
+        {
+            long int end = stringToUInt(request.value("end"));
+            // range = stringToUInt(request.value("range"));
+            // std::cout<<"\nend "<<end<<"\n"<<"range "<<range;
+            records = db.recordsWithEndTime(end, range);
+        }
+
+        Json::Value root;
+        // set meta
+        root["meta"]["number_of_records"] = records.size();
+        root["meta"]["begin"] = records[0].getTimestamp();
+        root["meta"]["end"] = records[records.size() - 1].getTimestamp();
+
+        // set payload
+        root["payload"] = Json::arrayValue;
+
+        for (auto &record : records)
+        {
+            root["payload"].append(record.toJson());
+        }
+
+        // config response and send
+        Response response = Response(200, APPLICATION_JSON);
+        response.setJsonContent(root);
         response.sendClient(client);
-        return;
-        return;
+
+        // end timer
+        auto end = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+        
+        ssLogger << range << "," << duration.count() << "\n";
+        return TERMINATE;
     }
 
-    if (request.method() == PUT && request.path() == "/tocsv")
+    // if (request.method() == GET && request.path() == "/api/")
+
+    if (request.method() == PUT && request.path() == "api/v1/tocsv")
     {
         db.allToCSV();
-        return;
+        return TERMINATE;
     }
 
-    if (request.method() == DEL && request.path() == "/all")
+    if (request.method() == DEL && request.path() == "api/v1/all")
     {
         db.deleteAllTableContent();
-        return;
-        
+        return TERMINATE;
     }
-    // return 404
-    Response response = Response(404, "text/html");
-    response.setHtmlContent("404.html");
-    // printf("%s\n",response.rawText();
-    response.sendClient(client);
-    return;
+
+    if (request.method() == DEL && request.path() == "api/v1/range")
+    {
+        int espID = stringToUInt(request.value("esp-id"));
+        long int begin = stringToUInt(request.value("begin"));
+        long int end = stringToUInt(request.value("end"));
+
+        int rc = db.deleteRecords(espID, begin, end);
+        Response response = Response(200, TEXT_PLAIN);
+
+        if (rc == SUCCESS)
+            response.setPlainContent("Delete resources successfully");
+        else
+            response.setPlainContent("Failed to delete resource");
+
+        response.sendClient(client);
+        return TERMINATE;
+    }
+
+    return CONTINUE;
 }

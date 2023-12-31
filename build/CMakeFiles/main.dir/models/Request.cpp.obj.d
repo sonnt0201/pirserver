@@ -108,4 +108,5 @@ CMakeFiles/main.dir/models/Request.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_bvector.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\vector.tcc \
  c:\mingw\include\string.h c:\mingw\include\strings.h \
- c:\mingw\include\wchar.h
+ c:\mingw\include\wchar.h \
+ C:\Users\nguye\source\repos\pirserver\models\http.h

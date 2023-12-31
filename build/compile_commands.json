@@ -46,5 +46,17 @@
   "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\main.dir\\lib\\sqlite3.c.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\lib\\sqlite3.c",
   "file": "C:/Users/nguye/source/repos/pirserver/lib/sqlite3.c",
   "output": "CMakeFiles/main.dir/lib/sqlite3.c.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\lib\\jsoncpp.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\lib\\jsoncpp.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/lib/jsoncpp.cpp",
+  "output": "CMakeFiles/main.dir/lib/jsoncpp.cpp.obj"
+},
+{
+  "directory": "C:/Users/nguye/source/repos/pirserver/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\lib\\utils.cpp.obj -c C:\\Users\\nguye\\source\\repos\\pirserver\\lib\\utils.cpp",
+  "file": "C:/Users/nguye/source/repos/pirserver/lib/utils.cpp",
+  "output": "CMakeFiles/main.dir/lib/utils.cpp.obj"
 }
 ]

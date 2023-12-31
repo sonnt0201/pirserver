@@ -1,24 +1,128 @@
 #include "Filter.hpp"
 
+bool v1(Request request);
+bool v2(Request request);
+
 bool filter(Request request)
 {
-    
+    // priority to newest version;
+    if (v2(request))
+        return true;
+    if (v1(request))
+        return true;
+
+    return true;
+};
+
+bool v2(Request request)
+{
+
+    if (request.method() == GET && request.path() == "/api/v2")
+    {
+        // Check valid number
+        std::string strBegin = request.value("begin"), strEnd = request.value("end");
+        // std::cout << "begin: " << stringToUInt(strBegin)
+        //           << std::endl
+        //           << "end: " << stringToUInt(strEnd) << "\n";
+
+        long int begin = stringToUInt(strBegin), end;
+
+        if (strEnd == "")
+            end = time(NULL);
+        else
+            end = stringToUInt(strEnd);
+
+        if (begin == -1 || end == -1 || begin > end)
+        {
+            // std::cout<<"Filter: Bad request !\n";
+            return false;
+        }
+
+        return true;
+    }
+
+    if (request.method() == GET && request.path() == "/api/v2/range")
+    {
+
+        if (request.value("begin") == "" && request.value("end") == "")
+            return false;
+        if (request.value("begin") != "" && request.value("end") != "")
+            return false;
+
+        if (
+            request.value("range") != "" && stringToUInt(request.value("range")) == -1)
+            return false;
+
+        if (
+            request.value("begin") != "" && stringToUInt(request.value("begin")) == -1)
+            return false;
+
+        if (
+            request.value("end") != "" && stringToUInt(request.value("end")) == -1)
+            return false;
+
+        // if (request.value("end"))
+        return true;
+    }
+
+    if (request.method() == GET && request.path() == "/api/v1/range")
+    {
+
+        if (request.value("begin") == "" && request.value("end") == "")
+            return false;
+        if (request.value("begin") != "" && request.value("end") != "")
+            return false;
+
+        if (
+            request.value("range") != "" && (stringToUInt(request.value("range")) == -1 || stringToUInt(request.value("range")) >= 5000))
+            return false;
+
+        if (
+            request.value("begin") != "" && stringToUInt(request.value("begin")) == -1)
+            return false;
+
+        if (
+            request.value("end") != "" && stringToUInt(request.value("end")) == -1)
+            return false;
+
+        // if (request.value("end"))
+        return true;
+    }
+
+    // end of filter
+    return false;
+}
+
+bool v1(Request request)
+{
+
     // request
     if (request.method() == POST)
     {
-    //    std::cout<<request.getText()<<"\n";
+        //    std::cout<<request.getText()<<"\n";
         // filter goes here
         std::string voltageStr = request.value("vol"),
                     idStr = request.value("esp-id"),
                     timeStr = request.value("time");
 
+        // std::cout << "vol=" << voltageStr << "\n"
+        //           << "esp-id=" << idStr << "\n"
+        //           << "timeStr=" << timeStr << "\n";
 
         // check empty string
-        if (voltageStr == "" || idStr == "" || timeStr == "") {std::cout<<"null \n" ; return 0;}
+        if (voltageStr == "" || idStr == "" || timeStr == "")
+        {
+            std::cout << "null \n";
+            return 0;
+        }
 
         // check unsigned
-        for (char c : idStr) if (c < '0' || c > '9') return 0;
-        for (char c : timeStr) if (c < '0' || c > '9') return 0;
+        for (char c : idStr)
+            if (c < '0' || c > '9')
+                return 0;
+        for (char c : timeStr)
+            if (c < '0' || c > '9')
+                return 0;
 
         // std::cout<<voltageStr<<std::endl;
         int count = 0;
@@ -27,7 +131,9 @@ bool filter(Request request)
 
             // check number and '+'
             if ((voltageStr[i] < '0' || voltageStr[i] > '9') && (voltageStr[i] != SEPARATOR))
-                {return 0;}
+            {
+                return 0;
+            }
 
             if (voltageStr[i] != SEPARATOR)
                 count++;
@@ -37,25 +143,81 @@ bool filter(Request request)
             if (count > 4)
                 return 0;
         }
-
-        
     }
-    
-    if (request.method() == GET && request.path() == "/api/range") {
-        std::string sBegin = request.value("begin");
-        std::string sEnd = request.value("end");
-        if (sBegin == "" || sEnd == "") {std::cout<<"null \n";return 0;}
-        if (sBegin[0] == '0' || sEnd[0] == '0'){std::cout<<"Invalid number in request params. \n" ;return 0;}
-        for (long i = 0; i < sBegin.length() ;i++) if (sBegin[i] < '0' || sBegin[i] > '9') return 0;
-        for (long i = 0; i < sEnd.length() ;i++) if (sEnd[i] < '0' || sEnd[i] > '9') return 0;
 
-        int iBegin = std::stoi(sBegin);
-        int iEnd = std::stoi(sEnd);
+    if (request.method() == GET && request.path() == "/api/v1")
+    {
+        // Check valid number
+        std::string strBegin = request.value("begin"), strEnd = request.value("end");
+        // std::cout << "begin: " << stringToUInt(strBegin)
+        //           << std::endl
+        //           << "end: " << stringToUInt(strEnd) << "\n";
 
-        if (iBegin > iEnd) return 0;
-        return 1;
+        long int begin = stringToUInt(strBegin), end;
+
+        if (strEnd == "")
+            end = time(NULL);
+        else
+            end = stringToUInt(strEnd);
+
+        if (begin == -1 || end == -1 || begin > end)
+        {
+            // std::cout<<"Filter: Bad request !\n";
+            return false;
+        }
+
+        return true;
     }
-  
+
+    if (request.method() == GET && request.path() == "/api/v1/range")
+    {
+
+        if (request.value("begin") == "" && request.value("end") == "")
+            return false;
+        if (request.value("begin") != "" && request.value("end") != "")
+            return false;
+
+        if (
+            request.value("range") != "" && (stringToUInt(request.value("range")) == -1 || stringToUInt(request.value("range")) >= 5000))
+            return false;
+
+        if (
+            request.value("begin") != "" && stringToUInt(request.value("begin")) == -1)
+            return false;
+
+        if (
+            request.value("end") != "" && stringToUInt(request.value("end")) == -1)
+            return false;
+
+        // if (request.value("end"))
+        return true;
+    }
+
+    if (request.method() == DEL && request.path() == "api/v1/range")
+    {
+        if (request.value("begin") == "" || request.value("end") == "" || request.value("esp-id") == "")
+            return false;
+        int begin = stringToUInt(request.value("begin")),
+            end = stringToUInt(request.value("end")),
+            espID = stringToUInt(request.value("esp-id"));
+
+        if (begin == -1 || end == -1 || espID == -1)
+            return false;
+        if (begin > end)
+            return false;
+        return true;
+    }
+
+    if (request.method() == GET && request.path() == "/test")
+    {
+        return true;
+    }
+
+    if (request.method() == DEL && request.path() == "api/v1/all")
+    {
+        return true;
+    }
+
     // Default:
-    return true;
+    return false;
 }

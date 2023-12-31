@@ -8,6 +8,7 @@
 #include <ctime>
 #include <chrono>
 
+#include "../lib/json.h"
 #pragma once
 
 #define DEVELOPMENT "./db/development.db"
@@ -15,7 +16,7 @@
 #define SUCCESS 1
 #define FAIL 0
 
-#define ROWMAX 10
+#define ROWMAX 1000
 
 // Separator for voltage data string
 #define SEPARATOR '_'
@@ -42,11 +43,16 @@ class PIRDB {
     std::vector<std::string> getDataWithID(int ID);
     int deleteAllTableContent() ;
     // TO-DO: implement method  
-    class RecordRow recordWithID(int ID);
-
+    class Record recordWithID(int ID);
+    std::vector<Record> recordsWithTimestamp(long int begin,long int end);
+    std::vector<Record> recordsWithBeginTime(long int begin, int range);
+    std::vector<Record> recordsWithEndTime(long int end, int range);
+    
     /* Add data to database - return SQLITE_DONE if saving sucessfully */
     int addData(int deviceID, std::string vol, int time);
-    
+    int latestTimestamp();
+    int oldestTimestamp();
+    int deleteRecords(int espID, int begin, int end);
     int allToCSV() ;
 
     
@@ -56,16 +62,21 @@ class PIRDB {
 };
 
 /* TO-DO: Implement Request Row class */ 
-class RecordRow {
+class Record {
     private:
-    int _id, _espID, _timestamp, _voltage[VOLNUM];
+    int _id,_espID, _timestamp;
+    std::string _rawVol;
+
     public:
+    Record (int id, int espID, char* rawVol, int timestamp);
+    int getID();
+    int getEspID();
+    std::vector<int> getVols();
+    int getTimestamp();
+    
+    Json::Value toJson();
 
-    /* Init function */ 
-    RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]);
-
-    /* Note: id, espID, timestamp, voltage is initialized only in init function (above), after initialized, they are READONLY */     int id();
-    int espID();
-    int timestamp();
-    std::vector <int> voltage();
+    std::string toJsonString();
+    static std::string csvTitleRow();
+    std::string toCsvRow();
 };

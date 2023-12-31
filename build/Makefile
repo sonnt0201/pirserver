@@ -213,6 +213,30 @@ controllers/server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/controllers/server.cpp.s
 .PHONY : controllers/server.cpp.s
 
+lib/jsoncpp.obj: lib/jsoncpp.cpp.obj
+.PHONY : lib/jsoncpp.obj
+
+# target to build an object file
+lib/jsoncpp.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/jsoncpp.cpp.obj
+.PHONY : lib/jsoncpp.cpp.obj
+
+lib/jsoncpp.i: lib/jsoncpp.cpp.i
+.PHONY : lib/jsoncpp.i
+
+# target to preprocess a source file
+lib/jsoncpp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/jsoncpp.cpp.i
+.PHONY : lib/jsoncpp.cpp.i
+
+lib/jsoncpp.s: lib/jsoncpp.cpp.s
+.PHONY : lib/jsoncpp.s
+
+# target to generate assembly for a file
+lib/jsoncpp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/jsoncpp.cpp.s
+.PHONY : lib/jsoncpp.cpp.s
+
 lib/sqlite3.obj: lib/sqlite3.c.obj
 .PHONY : lib/sqlite3.obj
 
@@ -236,6 +260,30 @@ lib/sqlite3.s: lib/sqlite3.c.s
 lib/sqlite3.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/sqlite3.c.s
 .PHONY : lib/sqlite3.c.s
+
+lib/utils.obj: lib/utils.cpp.obj
+.PHONY : lib/utils.obj
+
+# target to build an object file
+lib/utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/utils.cpp.obj
+.PHONY : lib/utils.cpp.obj
+
+lib/utils.i: lib/utils.cpp.i
+.PHONY : lib/utils.i
+
+# target to preprocess a source file
+lib/utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/utils.cpp.i
+.PHONY : lib/utils.cpp.i
+
+lib/utils.s: lib/utils.cpp.s
+.PHONY : lib/utils.s
+
+# target to generate assembly for a file
+lib/utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/lib/utils.cpp.s
+.PHONY : lib/utils.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -352,9 +400,15 @@ help:
 	@echo ... controllers/server.obj
 	@echo ... controllers/server.i
 	@echo ... controllers/server.s
+	@echo ... lib/jsoncpp.obj
+	@echo ... lib/jsoncpp.i
+	@echo ... lib/jsoncpp.s
 	@echo ... lib/sqlite3.obj
 	@echo ... lib/sqlite3.i
 	@echo ... lib/sqlite3.s
+	@echo ... lib/utils.obj
+	@echo ... lib/utils.i
+	@echo ... lib/utils.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

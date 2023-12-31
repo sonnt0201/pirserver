@@ -16,6 +16,8 @@ main.cpp
 ./controllers/Filter.cpp
 ./controllers/Controller.cpp
 lib/sqlite3.c
+lib/jsoncpp.cpp
+lib/utils.cpp
 )
 
 target_link_libraries(main PUBLIC ws2_32 )  

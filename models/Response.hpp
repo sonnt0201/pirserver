@@ -1,8 +1,15 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-#include <winsock2.h>
+#include <string.h>
+#include<winsock2.h>
+#include <unistd.h>
 #include <fstream>
+#include "../lib/json.h"
+#include "http.h"
+
+
+
 #pragma once
 
 const std::string ROOT = "../";
@@ -12,10 +19,11 @@ class Response {
         // Set statusCode string when init
         void setStatusCode();
         
-        std::string statusCode;
-        std::string contentType;
+        std::string _statusCode;
+        std::string _contentType;
+        std::string _body = "No body sent in response !";
         std::string accessControl = "";
-        std::string setJsonContent();
+        std::map<std::string, std::string> _headers;
     public:
 
         // Initialization
@@ -24,11 +32,20 @@ class Response {
         std::string jsonData;
         void setHtmlContent(std::string fileName);
         // body content for response
-        std::string body = "No body sent in response !";
         
+        void setHeaderParam(std::string key, std::string value);
+         void setJsonContent(Json::Value root);
+        void setPlainContent(std::string text);
+
+        void setCsvContent(std::vector<std::string> rows);
         // get full raw text of the response
         char* rawText() ;
 
         // send response to client socket
-        void sendClient(SOCKET client);
+        void sendClient(int client);
+        
+
+       
+        
+        
 };
