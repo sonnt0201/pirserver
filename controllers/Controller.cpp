@@ -244,7 +244,6 @@ MAPPER v1(int client, Request request)
         send404(client);
         return TERMINATE;
     }
-
     // Get number of row
     if (request.method() == GET && request.path() == "/api/v1/count")
     {
@@ -258,7 +257,6 @@ MAPPER v1(int client, Request request)
         response.sendClient(client);
         return TERMINATE;
     }
-
     // test page
     if (request.method() == GET && request.path() == "/test" && db.fileName() == DEVELOPMENT)
     {

@@ -5,6 +5,7 @@
 #include "../models/Request.hpp"
 #include "../models/Response.hpp"
 #include "../models/PIRDB.hpp"
+#include "../lib/lib.hpp"
 #pragma comment(lib, "Ws2_32.lib");
 
 #pragma once

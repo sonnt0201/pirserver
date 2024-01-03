@@ -84,7 +84,7 @@ void Server::run()
             // Delegate to filter and controller
             bool valid = filter(req);
             if (valid)
-                controller(clientSocket, req);
+                controller(clientSocket, req); else send400(clientSocket);
             closesocket(clientSocket);
 
             // Counting time

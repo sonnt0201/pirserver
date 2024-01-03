@@ -186,4 +186,10 @@ CMakeFiles/main.dir/main.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ratio \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\limits \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\parse_numbers.h \
+ c:\users\nguye\source\repos\pirserver\lib\lib.hpp \
+ c:\users\nguye\source\repos\pirserver\lib\json-forwards.h \
+ c:\users\nguye\source\repos\pirserver\lib\json.h \
+ c:\users\nguye\source\repos\pirserver\lib\sqlite3.h \
+ c:\users\nguye\source\repos\pirserver\lib\utils.hpp \
+ c:\users\nguye\source\repos\pirserver\models\models.hpp \
  C:\Users\nguye\source\repos\pirserver\lib/sqlite3.h

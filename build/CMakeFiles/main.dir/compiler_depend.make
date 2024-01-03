@@ -1366,9 +1366,13 @@ CMakeFiles/main.dir/main.cpp.obj: C:/Users/nguye/source/repos/pirserver/main.cpp
   C:/MinGW/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   C:/MinGW/lib/gcc/mingw32/6.3.0/include/stddef.h \
   C:/MinGW/lib/gcc/mingw32/6.3.0/include/stdint.h \
+  C:/Users/nguye/source/repos/pirserver/lib/json-forwards.h \
   C:/Users/nguye/source/repos/pirserver/lib/json.h \
+  C:/Users/nguye/source/repos/pirserver/lib/lib.hpp \
   C:/Users/nguye/source/repos/pirserver/lib/sqlite3.h \
+  C:/Users/nguye/source/repos/pirserver/lib/utils.hpp \
   C:/Users/nguye/source/repos/pirserver/models/http.h \
+  C:/Users/nguye/source/repos/pirserver/models/models.hpp \
   C:/Users/nguye/source/repos/pirserver/models/PIRDB.hpp \
   C:/Users/nguye/source/repos/pirserver/models/Request.hpp \
   C:/Users/nguye/source/repos/pirserver/models/Response.hpp
