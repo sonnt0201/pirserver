@@ -15,7 +15,10 @@ bool filter(Request request)
 };
 
 bool v2(Request request)
-{
+{   
+    if (request.method() == POST && request.path() == "/api/v2/video") {
+        return true;    
+    }
 
     if (request.method() == GET && request.path() == "/api/v2")
     {
@@ -120,6 +123,8 @@ bool v1(Request request)
             if (count > 4)
                 return 0;
         }
+
+        return true;
     }
 
     if (request.method() == GET && request.path() == "/api/v1")
@@ -170,7 +175,7 @@ bool v1(Request request)
         return true;
     }
 
-    if (request.method() == DEL && request.path() == "api/v1/range")
+    if (request.method() == DEL && request.path() == "/api/v1/range")
     {
         if (request.value("begin") == "" || request.value("end") == "" || request.value("esp-id") == "")
             return false;
@@ -190,7 +195,7 @@ bool v1(Request request)
         return true;
     }
 
-    if (request.method() == DEL && request.path() == "api/v1/all")
+    if (request.method() == DEL && request.path() == "/api/v1/all")
     {
         return true;
     }

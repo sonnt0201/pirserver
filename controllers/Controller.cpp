@@ -27,6 +27,15 @@ void controller(int client, Request request)
 MAPPER v2(int client, Request request)
 {
 
+    if (request.method() == POST && request.path() == "/api/v2/video") {
+
+        std::cout<<"Path: "<<request.path()<<"\n"<<request.getText()<<"\n";
+        Response response = Response(200, TEXT_PLAIN);
+        response.setPlainContent("HTTP Message logged on server. ");
+        response.sendClient(client);
+        return TERMINATE;
+    }
+
     if (request.method() == GET && request.path() == "/api/v2")
     {
 
